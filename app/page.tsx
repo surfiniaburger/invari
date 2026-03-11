@@ -25,7 +25,7 @@ export default function Home() {
         <div className="max-w-xl text-center md:text-left">
           {/* Badge */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/70 backdrop-blur-sm">
-            InvariAutonomous AI Research &rarr;
+            In-vari Autonomous AI Research &rarr;
           </div>
 
           {/* Title */}
@@ -36,15 +36,18 @@ export default function Home() {
 
           {/* Description */}
           <p className="mx-auto mb-10 max-w-2xl text-base text-white/60 sm:text-lg md:mx-0">
-            A multi-agent swarm that autonomously optimizes LLM architectures.
+            Building secure multi-agent swarm that autonomously optimizes LLM architectures.
             Powered by ADK orchestration, it hacks, trains, and refines —
             pushing past human-paced research, one experiment at a time.
           </p>
 
-          {/* Buttons */}
+          {/* Button */}
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start">
-            <button className="group relative inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-8 text-base font-medium text-black transition-all hover:bg-white/90 hover:scale-105">
-              Launch Swarm
+            <a
+              href="mailto:ade@in-vari.com"
+              className="group relative inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-8 text-base font-medium text-black transition-all hover:bg-white/90 hover:scale-105"
+            >
+              Contact Us
               <svg
                 className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
                 fill="none"
@@ -58,10 +61,7 @@ export default function Home() {
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
-            </button>
-            <button className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 text-base font-medium text-white backdrop-blur-sm transition-all hover:bg-white/10 hover:border-white/30">
-              View Results
-            </button>
+            </a>
           </div>
         </div>
 
