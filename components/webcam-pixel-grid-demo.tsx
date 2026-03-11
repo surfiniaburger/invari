@@ -1,50 +1,57 @@
-import { PixelGridBackground } from "@/components/ui/pixel-grid-background";
-import PixelatedCanvasDemo from "@/components/pixelated-canvas-demo";
+import { WebcamPixelGrid } from "@/components/ui/webcam-pixel-grid";
 
-export default function Home() {
+export default function WebcamPixelGridDemo() {
   return (
-    <div className="relative h-screen w-screen bg-black overflow-hidden font-sans">
-      {/* Interactive pixel grid background */}
+    <div className="relative h-screen w-screen bg-black overflow-hidden">
+     
+
+      {/* Webcam pixel grid background */}
       <div className="absolute inset-0">
-        <PixelGridBackground
+        <WebcamPixelGrid
           gridCols={60}
           gridRows={40}
-          maxElevation={30}
-          gridColor="#080808"
+          maxElevation={50}
+          motionSensitivity={0.25}
+          elevationSmoothing={0.2}
+          colorMode="webcam"
           backgroundColor="#030303"
-          borderOpacity={0.04}
+          mirror={true}
+          gapRatio={0.05}
+          invertColors={false}
+          darken={0.6}
+          borderColor="#ffffff"
+          borderOpacity={0.06}
           className="w-full h-full"
+          onWebcamReady={() => console.log("Webcam ready!")}
+          onWebcamError={(err) => console.error("Webcam error:", err)}
         />
       </div>
 
-      {/* Gradient overlay for depth */}
+      {/* Gradient overlay for better text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 pointer-events-none" />
 
       {/* Hero content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 md:flex-row md:gap-12 md:px-12">
-        <div className="max-w-xl text-center md:text-left">
+      <div className="relative z-10 flex h-full flex-col items-center justify-center px-4">
+        <div className="max-w-4xl text-center">
           {/* Badge */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/70 backdrop-blur-sm">
-            InvariAutonomous AI Research &rarr;
+            Introducing AI SaaS Template &rarr;
           </div>
 
           {/* Title */}
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Intelligence at every{" "}
-            <span className="text-zinc-400">iteration</span>.
+          <h1 className="mb-6 text-xl font-bold tracking-tight text-white sm:text-6xl md:text-8xl">
+          Ship stunning landing pages faster.
           </h1>
 
           {/* Description */}
-          <p className="mx-auto mb-10 max-w-2xl text-base text-white/60 sm:text-lg md:mx-0">
-            A multi-agent swarm that autonomously optimizes LLM architectures.
-            Powered by ADK orchestration, it hacks, trains, and refines —
-            pushing past human-paced research, one experiment at a time.
+          <p className="mx-auto mb-10 max-w-2xl text-base text-white/60 sm:text-xl">
+            Build amazing landing pages with component blocks and templates from aceternity, without having to worry about styling and animations.
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <button className="group relative inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-8 text-base font-medium text-black transition-all hover:bg-white/90 hover:scale-105">
-              Launch Swarm
+              Get Started
               <svg
                 className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
                 fill="none"
@@ -60,15 +67,13 @@ export default function Home() {
               </svg>
             </button>
             <button className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 text-base font-medium text-white backdrop-blur-sm transition-all hover:bg-white/10 hover:border-white/30">
-              View Results
+              View Documentation
             </button>
           </div>
         </div>
 
-        {/* Pixelated Canvas Feature */}
-        <div className="mt-12 hidden md:block md:mt-0 lg:scale-110">
-          <PixelatedCanvasDemo />
-        </div>
+        {/* Scroll indicator */}
+        
       </div>
     </div>
   );
