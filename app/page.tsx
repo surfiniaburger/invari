@@ -25,7 +25,7 @@ export default function Home() {
         <div className="max-w-xl text-center md:text-left">
           {/* Badge */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/70 backdrop-blur-sm">
-            In-vari Autonomous AI Research &rarr;
+            In-varia Autonomous AI Research &rarr;
           </div>
 
           {/* Title */}
@@ -44,7 +44,7 @@ export default function Home() {
           {/* Button */}
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start">
             <a
-              href="mailto:ade@in-vari.com"
+              href="mailto:ade@in-varia.com"
               className="group relative inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-8 text-base font-medium text-black transition-all hover:bg-white/90 hover:scale-105"
             >
               Contact Us
