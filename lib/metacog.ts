@@ -130,6 +130,7 @@ export function formatResultsForRecharts(data: BenchmarkResults, type: "static" 
     accuracy: number;
     m_ratio: number;
     color: string;
+    provider: "anthropic" | "google" | "openai" | "other";
     labelOffsetX: number;
     labelOffsetY: number;
   }> = [];
@@ -154,6 +155,7 @@ export function formatResultsForRecharts(data: BenchmarkResults, type: "static" 
         accuracy: acc,
         m_ratio,
         color: info.color,
+        provider: info.provider,
         labelOffsetX: 0,
         labelOffsetY: 0,
       });

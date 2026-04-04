@@ -12,6 +12,32 @@ interface Props {
 
 export const MetacogPlotlyChart = ({ data, type }: Props) => {
   const chartData = useMemo(() => formatResultsForRecharts(data, type), [data, type]);
+  const providerIcons: Record<string, string> = {
+    openai: "/images/chatgpt-4.svg",
+    anthropic: "/images/anthropic-1.svg",
+    google: "/images/gemini-icon-logo.svg",
+    glm: "/images/images.jpeg",
+  };
+
+  const getIconForModel = (payload: { provider?: string; label?: string }) => {
+    if (payload.provider && providerIcons[payload.provider]) {
+      return providerIcons[payload.provider];
+    }
+    if (payload.label?.toLowerCase().includes("glm")) {
+      return providerIcons.glm;
+    }
+    if (payload.label?.toLowerCase().includes("deepseek")) {
+      return "/images/deepseek-2.svg";
+    }
+    return null;
+  };
+
+  const getIconFilter = (payload: { provider?: string }) => {
+    if (payload.provider === "openai") {
+      return "invert(1) brightness(1.35) contrast(1.1)";
+    }
+    return "none";
+  };
 
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
@@ -67,14 +93,43 @@ export const MetacogPlotlyChart = ({ data, type }: Props) => {
             name="Models"
             data={chartData}
             shape={(props: any) => (
-              <circle
-                cx={props.cx}
-                cy={props.cy}
-                r={8}
-                fill={props.payload.color}
-                stroke="white"
-                strokeWidth={1}
-              />
+              (() => {
+                const iconSrc = getIconForModel(props.payload);
+                if (!iconSrc) {
+                  return (
+                    <circle
+                      cx={props.cx}
+                      cy={props.cy}
+                      r={8}
+                      fill={props.payload.color}
+                      stroke="white"
+                      strokeWidth={1}
+                    />
+                  );
+                }
+
+                return (
+                  <g>
+                    <circle
+                      cx={props.cx}
+                      cy={props.cy}
+                      r={11}
+                      fill="hsl(var(--background))"
+                      stroke="white"
+                      strokeWidth={1}
+                    />
+                    <image
+                      href={iconSrc}
+                      x={props.cx - 9}
+                      y={props.cy - 9}
+                      width={18}
+                      height={18}
+                      preserveAspectRatio="xMidYMid meet"
+                      style={{ filter: getIconFilter(props.payload) }}
+                    />
+                  </g>
+                );
+              })()
             )}
           />
         </ScatterChart>
