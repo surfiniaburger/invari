@@ -79,18 +79,6 @@ export const PROVIDER_CONFIG: Record<
   "deepseek-ai/deepseek-v3.1": { label: "DeepSeek V3.1", color: "#22d3ee", provider: "other" },
   "deepseek-ai/deepseek-v3.2": { label: "DeepSeek V3.2", color: "#06b6d4", provider: "other" },
   "zai/glm-5": { label: "GLM-5", color: "#f59e0b", provider: "other" },
-  // Backwards-compat and Raw IDs from Batch Extraction
-  "anthropic/claude-opus-4-6@default": { label: "Claude Opus 4.6", color: "#6366f1", provider: "anthropic" },
-  "anthropic/claude-sonnet-4-6@default": { label: "Claude Sonnet 4.6", color: "#818cf8", provider: "anthropic" },
-  "google/gemini-3.1-pro-preview": { label: "Gemini 3.1 Pro", color: "#10b981", provider: "google" },
-  "google/gemini-3.1-flash-lite-preview": { label: "Gemini 3.1 Flash-Lite", color: "#6ee7b7", provider: "google" },
-  "google/gemini-3-flash-preview": { label: "Gemini 3 Flash Preview", color: "#34d399", provider: "google" },
-  "google/gemini-2.5-flash": { label: "Gemini 2.5 Flash", color: "#22c55e", provider: "google" },
-  "openai/gpt-5.4-2026-03-05": { label: "GPT-5.4", color: "#f43f5e", provider: "openai" },
-  "openai/gpt-5.4-mini-2026-03-17": { label: "GPT-5.4 Mini", color: "#fb7185", provider: "openai" },
-  "openai/gpt-oss-20b": { label: "GPT-OSS-20B", color: "#fb7185", provider: "openai" },
-  "deepseek-ai/deepseek-v3.1": { label: "DeepSeek V3.1", color: "#22d3ee", provider: "other" },
-  "zai/glm-5": { label: "GLM-5", color: "#f59e0b", provider: "other" },
   // Legacy aliases
   claude_opus: { label: "Claude Opus 4.6", color: "#6366f1", provider: "anthropic" },
   claude_sonnet: { label: "Claude Sonnet 4.6", color: "#818cf8", provider: "anthropic" },
