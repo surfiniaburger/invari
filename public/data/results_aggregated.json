@@ -1,0 +1,794 @@
+{
+    "Gemini 2.5 Flash": {
+        "static": {
+            "accuracy": 0.85,
+            "ece": 0.0392,
+            "brier": 0.0933,
+            "type2_auc": 0.7665,
+            "meta_d_prime": 1.0285,
+            "d_prime": 1.4657,
+            "m_ratio": 0.7017
+        },
+        "multiturn_v1": {
+            "positive_update_rate": 0.973,
+            "negative_resistance_rate": 0.853,
+            "bayesian_resilience": 0.913,
+            "total_flips": 0,
+            "total_trials": 150,
+            "gaslighting_flips": 0,
+            "gaslighting_trials": 75
+        },
+        "multiturn_v2": {
+            "overall": {
+                "acc": 0.813,
+                "ece": 0.102,
+                "brier": 0.161,
+                "type2_auc": 0.518,
+                "meta_d_prime": 0.063,
+                "d_prime": 1.259,
+                "m_ratio": 0.05
+            },
+            "positive": {
+                "acc": 0.812,
+                "ece": 0.105,
+                "brier": 0.164,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 1.25,
+                "m_ratio": 0.0
+            },
+            "negative": {
+                "acc": 0.711,
+                "ece": 0.202,
+                "brier": 0.242,
+                "type2_auc": 0.538,
+                "meta_d_prime": 0.137,
+                "d_prime": 0.787,
+                "m_ratio": 0.173
+            },
+            "neutral": {
+                "acc": 0.944,
+                "ece": 0.028,
+                "brier": 0.053,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 2.253,
+                "m_ratio": 0.0
+            },
+            "sensitivity_score": 0.765,
+            "total_flips": 7,
+            "total_trials": 150
+        },
+        "bootstrap": {
+            "mean": 0.7414,
+            "ci_95": 0.2478,
+            "per_seed": [
+                0.7966,
+                0.9467,
+                0.4211,
+                0.8414,
+                0.7011
+            ]
+        }
+    },
+    "GLM-5": {
+        "static": {
+            "accuracy": 0.915,
+            "ece": 0.1108,
+            "brier": 0.0653,
+            "type2_auc": 0.9084,
+            "meta_d_prime": 1.8822,
+            "d_prime": 1.9406,
+            "m_ratio": 0.9699
+        },
+        "multiturn_v1": {
+            "positive_update_rate": 0.987,
+            "negative_resistance_rate": 1.0,
+            "bayesian_resilience": 0.993,
+            "total_flips": 0,
+            "total_trials": 150,
+            "gaslighting_flips": 0,
+            "gaslighting_trials": 75
+        },
+        "multiturn_v2": {
+            "overall": {
+                "acc": 0.92,
+                "ece": 0.054,
+                "brier": 0.065,
+                "type2_auc": 0.701,
+                "meta_d_prime": 0.746,
+                "d_prime": 1.987,
+                "m_ratio": 0.375
+            },
+            "positive": {
+                "acc": 0.957,
+                "ece": 0.04,
+                "brier": 0.043,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 2.421,
+                "m_ratio": 0.0
+            },
+            "negative": {
+                "acc": 0.822,
+                "ece": 0.072,
+                "brier": 0.133,
+                "type2_auc": 0.723,
+                "meta_d_prime": 0.837,
+                "d_prime": 1.307,
+                "m_ratio": 0.64
+            },
+            "neutral": {
+                "acc": 0.972,
+                "ece": 0.102,
+                "brier": 0.022,
+                "type2_auc": 1.0,
+                "meta_d_prime": 6.031,
+                "d_prime": 2.708,
+                "m_ratio": 2.228
+            },
+            "sensitivity_score": 0.857,
+            "total_flips": 9,
+            "total_trials": 150
+        },
+        "bootstrap": {
+            "mean": 1.1063,
+            "ci_95": 0.1095,
+            "per_seed": [
+                1.1373,
+                1.1903,
+                1.1296,
+                1.1176,
+                0.9566
+            ]
+        }
+    },
+    "GPT-5.4": {
+        "static": {
+            "accuracy": 0.9,
+            "ece": 0.0642,
+            "brier": 0.0628,
+            "type2_auc": 0.8028,
+            "meta_d_prime": 1.2043,
+            "d_prime": 1.8124,
+            "m_ratio": 0.6645
+        },
+        "multiturn_v1": {
+            "positive_update_rate": 1.0,
+            "negative_resistance_rate": 1.0,
+            "bayesian_resilience": 1.0,
+            "total_flips": 0,
+            "total_trials": 150,
+            "gaslighting_flips": 0,
+            "gaslighting_trials": 75
+        },
+        "multiturn_v2": {
+            "overall": {
+                "acc": 0.953,
+                "ece": 0.054,
+                "brier": 0.037,
+                "type2_auc": 0.643,
+                "meta_d_prime": 0.518,
+                "d_prime": 2.373,
+                "m_ratio": 0.218
+            },
+            "positive": {
+                "acc": 0.986,
+                "ece": 0.069,
+                "brier": 0.019,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 3.088,
+                "m_ratio": 0.0
+            },
+            "negative": {
+                "acc": 0.956,
+                "ece": 0.098,
+                "brier": 0.016,
+                "type2_auc": 1.0,
+                "meta_d_prime": 6.031,
+                "d_prime": 2.406,
+                "m_ratio": 2.507
+            },
+            "neutral": {
+                "acc": 0.889,
+                "ece": 0.028,
+                "brier": 0.1,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 1.726,
+                "m_ratio": 0.0
+            },
+            "sensitivity_score": 0.883,
+            "total_flips": 3,
+            "total_trials": 150
+        },
+        "bootstrap": {
+            "mean": 0.5782,
+            "ci_95": 0.2575,
+            "per_seed": [
+                0.6834,
+                0.6477,
+                0.2117,
+                0.6323,
+                0.716
+            ]
+        }
+    },
+    "Gemini 3.1 Pro": {
+        "static": {
+            "accuracy": 0.925,
+            "ece": 0.1208,
+            "brier": 0.0569,
+            "type2_auc": 0.9676,
+            "meta_d_prime": 2.6109,
+            "d_prime": 2.0358,
+            "m_ratio": 1.2825
+        },
+        "multiturn_v1": {
+            "positive_update_rate": 1.0,
+            "negative_resistance_rate": 1.0,
+            "bayesian_resilience": 1.0,
+            "total_flips": 0,
+            "total_trials": 150,
+            "gaslighting_flips": 0,
+            "gaslighting_trials": 75
+        },
+        "multiturn_v2": {
+            "overall": {
+                "acc": 0.967,
+                "ece": 0.064,
+                "brier": 0.024,
+                "type2_auc": 0.699,
+                "meta_d_prime": 0.736,
+                "d_prime": 2.594,
+                "m_ratio": 0.284
+            },
+            "positive": {
+                "acc": 0.986,
+                "ece": 0.069,
+                "brier": 0.019,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 3.088,
+                "m_ratio": 0.0
+            },
+            "negative": {
+                "acc": 0.933,
+                "ece": 0.043,
+                "brier": 0.045,
+                "type2_auc": 0.663,
+                "meta_d_prime": 0.594,
+                "d_prime": 2.123,
+                "m_ratio": 0.28
+            },
+            "neutral": {
+                "acc": 0.972,
+                "ece": 0.083,
+                "brier": 0.007,
+                "type2_auc": 1.0,
+                "meta_d_prime": 6.031,
+                "d_prime": 2.708,
+                "m_ratio": 2.228
+            },
+            "sensitivity_score": 0.901,
+            "total_flips": 2,
+            "total_trials": 150
+        },
+        "bootstrap": {
+            "mean": 1.3601,
+            "ci_95": 0.1334,
+            "per_seed": [
+                1.4654,
+                1.3397,
+                1.1852,
+                1.4016,
+                1.4086
+            ]
+        }
+    },
+    "DeepSeek V3.1": {
+        "static": {
+            "accuracy": 0.825,
+            "ece": 0.0192,
+            "brier": 0.11,
+            "type2_auc": 0.7474,
+            "meta_d_prime": 0.9425,
+            "d_prime": 1.3217,
+            "m_ratio": 0.7131
+        },
+        "multiturn_v1": {
+            "positive_update_rate": 0.947,
+            "negative_resistance_rate": 0.619,
+            "bayesian_resilience": 0.783,
+            "total_flips": 23,
+            "total_trials": 150,
+            "gaslighting_flips": 22,
+            "gaslighting_trials": 75
+        },
+        "multiturn_v2": {
+            "overall": {
+                "acc": 0.793,
+                "ece": 0.11,
+                "brier": 0.168,
+                "type2_auc": 0.545,
+                "meta_d_prime": 0.161,
+                "d_prime": 1.157,
+                "m_ratio": 0.139
+            },
+            "positive": {
+                "acc": 0.812,
+                "ece": 0.105,
+                "brier": 0.164,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 1.25,
+                "m_ratio": 0.0
+            },
+            "negative": {
+                "acc": 0.778,
+                "ece": 0.094,
+                "brier": 0.154,
+                "type2_auc": 0.647,
+                "meta_d_prime": 0.534,
+                "d_prime": 1.081,
+                "m_ratio": 0.494
+            },
+            "neutral": {
+                "acc": 0.778,
+                "ece": 0.139,
+                "brier": 0.192,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 1.081,
+                "m_ratio": 0.0
+            },
+            "sensitivity_score": 0.747,
+            "total_flips": 8,
+            "total_trials": 150
+        },
+        "bootstrap": {
+            "mean": 0.6306,
+            "ci_95": 0.0586,
+            "per_seed": [
+                0.6415,
+                0.5474,
+                0.6457,
+                0.6573,
+                0.6609
+            ]
+        }
+    },
+    "Claude Opus 4.6": {
+        "static": {
+            "accuracy": 0.92,
+            "ece": 0.1217,
+            "brier": 0.0528,
+            "type2_auc": 0.9457,
+            "meta_d_prime": 2.2685,
+            "d_prime": 1.9871,
+            "m_ratio": 1.1416
+        },
+        "multiturn_v1": {
+            "positive_update_rate": 1.0,
+            "negative_resistance_rate": 1.0,
+            "bayesian_resilience": 1.0,
+            "total_flips": 0,
+            "total_trials": 150,
+            "gaslighting_flips": 0,
+            "gaslighting_trials": 75
+        },
+        "multiturn_v2": {
+            "overall": {
+                "acc": 0.967,
+                "ece": 0.094,
+                "brier": 0.029,
+                "type2_auc": 0.976,
+                "meta_d_prime": 2.793,
+                "d_prime": 2.594,
+                "m_ratio": 1.077
+            },
+            "positive": {
+                "acc": 0.986,
+                "ece": 0.093,
+                "brier": 0.018,
+                "type2_auc": 0.985,
+                "meta_d_prime": 3.08,
+                "d_prime": 3.088,
+                "m_ratio": 0.997
+            },
+            "negative": {
+                "acc": 0.933,
+                "ece": 0.135,
+                "brier": 0.051,
+                "type2_auc": 0.96,
+                "meta_d_prime": 2.481,
+                "d_prime": 2.123,
+                "m_ratio": 1.169
+            },
+            "neutral": {
+                "acc": 0.972,
+                "ece": 0.083,
+                "brier": 0.021,
+                "type2_auc": 0.986,
+                "meta_d_prime": 3.096,
+                "d_prime": 2.708,
+                "m_ratio": 1.144
+            },
+            "sensitivity_score": 0.906,
+            "total_flips": 3,
+            "total_trials": 150
+        },
+        "bootstrap": {
+            "mean": 1.1201,
+            "ci_95": 0.3207,
+            "per_seed": [
+                1.1416,
+                1.2401,
+                0.7804,
+                0.9771,
+                1.4611
+            ]
+        }
+    },
+    "DeepSeek V3.2": {
+        "static": {
+            "accuracy": 0.855,
+            "ece": 0.0642,
+            "brier": 0.1008,
+            "type2_auc": 0.8002,
+            "meta_d_prime": 1.191,
+            "d_prime": 1.4964,
+            "m_ratio": 0.7959
+        },
+        "multiturn_v1": {
+            "positive_update_rate": 0.987,
+            "negative_resistance_rate": 0.576,
+            "bayesian_resilience": 0.781,
+            "total_flips": 30,
+            "total_trials": 150,
+            "gaslighting_flips": 28,
+            "gaslighting_trials": 75
+        },
+        "multiturn_v2": {
+            "overall": {
+                "acc": 0.9,
+                "ece": 0.029,
+                "brier": 0.075,
+                "type2_auc": 0.656,
+                "meta_d_prime": 0.567,
+                "d_prime": 1.812,
+                "m_ratio": 0.313
+            },
+            "positive": {
+                "acc": 0.971,
+                "ece": 0.057,
+                "brier": 0.032,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 2.681,
+                "m_ratio": 0.0
+            },
+            "negative": {
+                "acc": 0.756,
+                "ece": 0.109,
+                "brier": 0.155,
+                "type2_auc": 0.693,
+                "meta_d_prime": 0.711,
+                "d_prime": 0.979,
+                "m_ratio": 0.727
+            },
+            "neutral": {
+                "acc": 0.944,
+                "ece": 0.046,
+                "brier": 0.059,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 2.253,
+                "m_ratio": 0.0
+            },
+            "sensitivity_score": 0.842,
+            "total_flips": 11,
+            "total_trials": 150
+        },
+        "bootstrap": {
+            "mean": 0.6529,
+            "ci_95": 0.3245,
+            "per_seed": [
+                0.8186,
+                0.934,
+                0.6917,
+                0.5637,
+                0.2563
+            ]
+        }
+    },
+    "Gemini 3 Flash Preview": {
+        "static": {
+            "accuracy": 0.92,
+            "ece": 0.1167,
+            "brier": 0.0531,
+            "type2_auc": 0.9674,
+            "meta_d_prime": 2.6075,
+            "d_prime": 1.9871,
+            "m_ratio": 1.3122
+        },
+        "multiturn_v1": {
+            "positive_update_rate": 1.0,
+            "negative_resistance_rate": 1.0,
+            "bayesian_resilience": 1.0,
+            "total_flips": 0,
+            "total_trials": 150,
+            "gaslighting_flips": 0,
+            "gaslighting_trials": 75
+        },
+        "multiturn_v2": {
+            "overall": {
+                "acc": 0.96,
+                "ece": 0.083,
+                "brier": 0.033,
+                "type2_auc": 0.826,
+                "meta_d_prime": 1.326,
+                "d_prime": 2.476,
+                "m_ratio": 0.536
+            },
+            "positive": {
+                "acc": 1.0,
+                "ece": 0.095,
+                "brier": 0.019,
+                "type2_auc": 0.0,
+                "meta_d_prime": 0.0,
+                "d_prime": 6.031,
+                "m_ratio": 0.0
+            },
+            "negative": {
+                "acc": 0.889,
+                "ece": 0.069,
+                "brier": 0.074,
+                "type2_auc": 0.79,
+                "meta_d_prime": 1.14,
+                "d_prime": 1.726,
+                "m_ratio": 0.661
+            },
+            "neutral": {
+                "acc": 0.972,
+                "ece": 0.083,
+                "brier": 0.007,
+                "type2_auc": 1.0,
+                "meta_d_prime": 6.031,
+                "d_prime": 2.708,
+                "m_ratio": 2.228
+            },
+            "sensitivity_score": 0.891,
+            "total_flips": 6,
+            "total_trials": 150
+        },
+        "bootstrap": {
+            "mean": 1.2646,
+            "ci_95": 0.2012,
+            "per_seed": [
+                1.3122,
+                1.2575,
+                1.0244,
+                1.2526,
+                1.4764
+            ]
+        }
+    },
+    "GPT-OSS-20B": {
+        "static": {
+            "accuracy": 0.84,
+            "ece": 0.0342,
+            "brier": 0.1122,
+            "type2_auc": 0.7132,
+            "meta_d_prime": 0.7957,
+            "d_prime": 1.4064,
+            "m_ratio": 0.5658
+        },
+        "multiturn_v1": {
+            "positive_update_rate": 0.827,
+            "negative_resistance_rate": 0.864,
+            "bayesian_resilience": 0.845,
+            "total_flips": 3,
+            "total_trials": 150,
+            "gaslighting_flips": 3,
+            "gaslighting_trials": 75
+        },
+        "multiturn_v2": {
+            "overall": {
+                "acc": 0.807,
+                "ece": 0.109,
+                "brier": 0.163,
+                "type2_auc": 0.56,
+                "meta_d_prime": 0.215,
+                "d_prime": 1.224,
+                "m_ratio": 0.176
+            },
+            "positive": {
+                "acc": 0.841,
+                "ece": 0.076,
+                "brier": 0.14,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 1.41,
+                "m_ratio": 0.0
+            },
+            "negative": {
+                "acc": 0.733,
+                "ece": 0.18,
+                "brier": 0.213,
+                "type2_auc": 0.634,
+                "meta_d_prime": 0.484,
+                "d_prime": 0.881,
+                "m_ratio": 0.549
+            },
+            "neutral": {
+                "acc": 0.833,
+                "ece": 0.083,
+                "brier": 0.146,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 1.368,
+                "m_ratio": 0.0
+            },
+            "sensitivity_score": 0.748,
+            "total_flips": 8,
+            "total_trials": 150
+        },
+        "bootstrap": {
+            "mean": 0.6102,
+            "ci_95": 0.2955,
+            "per_seed": [
+                0.7285,
+                0.9322,
+                0.4194,
+                0.6292,
+                0.3415
+            ]
+        }
+    },
+    "Claude Sonnet 4.6": {
+        "static": {
+            "accuracy": 0.835,
+            "ece": 0.0392,
+            "brier": 0.1136,
+            "type2_auc": 0.6993,
+            "meta_d_prime": 0.7389,
+            "d_prime": 1.3776,
+            "m_ratio": 0.5364
+        },
+        "multiturn_v1": {
+            "positive_update_rate": 0.947,
+            "negative_resistance_rate": 0.928,
+            "bayesian_resilience": 0.937,
+            "total_flips": 0,
+            "total_trials": 150,
+            "gaslighting_flips": 0,
+            "gaslighting_trials": 75
+        },
+        "multiturn_v2": {
+            "overall": {
+                "acc": 0.86,
+                "ece": 0.07,
+                "brier": 0.127,
+                "type2_auc": 0.523,
+                "meta_d_prime": 0.082,
+                "d_prime": 1.528,
+                "m_ratio": 0.054
+            },
+            "positive": {
+                "acc": 0.884,
+                "ece": 0.033,
+                "brier": 0.104,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 1.691,
+                "m_ratio": 0.0
+            },
+            "negative": {
+                "acc": 0.822,
+                "ece": 0.139,
+                "brier": 0.167,
+                "type2_auc": 0.556,
+                "meta_d_prime": 0.198,
+                "d_prime": 1.307,
+                "m_ratio": 0.152
+            },
+            "neutral": {
+                "acc": 0.861,
+                "ece": 0.056,
+                "brier": 0.123,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 1.535,
+                "m_ratio": 0.0
+            },
+            "sensitivity_score": 0.801,
+            "total_flips": 4,
+            "total_trials": 150
+        },
+        "bootstrap": {
+            "mean": 0.4914,
+            "ci_95": 0.2,
+            "per_seed": [
+                0.6335,
+                0.4784,
+                0.2494,
+                0.4515,
+                0.6441
+            ]
+        }
+    },
+    "Gemini 3.1 Flash-Lite": {
+        "static": {
+            "accuracy": 0.815,
+            "ece": 0.0725,
+            "brier": 0.1339,
+            "type2_auc": 0.6715,
+            "meta_d_prime": 0.6281,
+            "d_prime": 1.2678,
+            "m_ratio": 0.4954
+        },
+        "multiturn_v1": {
+            "positive_update_rate": 0.947,
+            "negative_resistance_rate": 0.707,
+            "bayesian_resilience": 0.827,
+            "total_flips": 19,
+            "total_trials": 150,
+            "gaslighting_flips": 19,
+            "gaslighting_trials": 75
+        },
+        "multiturn_v2": {
+            "overall": {
+                "acc": 0.847,
+                "ece": 0.069,
+                "brier": 0.131,
+                "type2_auc": 0.522,
+                "meta_d_prime": 0.076,
+                "d_prime": 1.446,
+                "m_ratio": 0.053
+            },
+            "positive": {
+                "acc": 0.899,
+                "ece": 0.018,
+                "brier": 0.091,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 1.801,
+                "m_ratio": 0.0
+            },
+            "negative": {
+                "acc": 0.756,
+                "ece": 0.157,
+                "brier": 0.197,
+                "type2_auc": 0.544,
+                "meta_d_prime": 0.157,
+                "d_prime": 0.979,
+                "m_ratio": 0.16
+            },
+            "neutral": {
+                "acc": 0.861,
+                "ece": 0.056,
+                "brier": 0.123,
+                "type2_auc": 0.5,
+                "meta_d_prime": 0.0,
+                "d_prime": 1.535,
+                "m_ratio": 0.0
+            },
+            "sensitivity_score": 0.789,
+            "total_flips": 9,
+            "total_trials": 150
+        },
+        "bootstrap": {
+            "mean": 0.4481,
+            "ci_95": 0.2047,
+            "per_seed": [
+                0.6203,
+                0.2963,
+                0.6336,
+                0.3593,
+                0.3308
+            ]
+        }
+    }
+}
