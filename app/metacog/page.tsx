@@ -102,13 +102,17 @@ export default function MetacogDashboard() {
               </TabsList>
             </Tabs>
           </div>
-          <div className="mt-2">
-            {mode === "static" ? (
-              <MetacogPlotlyChart data={results as any} type="static" />
-            ) : (
-              <MetacogPlotlyChart data={results as any} type="dynamic" />
-            )}
-          </div>
+          <Card className="border-white/10 bg-white/5">
+            <CardHeader>
+              <CardTitle className="text-white">Accuracy vs. Metacognition</CardTitle>
+              <CardDescription className="text-white/60">
+                The capability chasm is visible when m-ratio is plotted against accuracy.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <MetacogPlotlyChart data={results} type={mode} />
+            </CardContent>
+          </Card>
         </section>
 
         <section className="mt-12">
