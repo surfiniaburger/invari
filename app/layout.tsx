@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "In-vari | Metacognitive Control for Frontier Models",
+  title: "In-varia | Metacognitive Control for Frontier Models",
   description:
     "Investor-grade evaluation of metacognitive control in frontier models, with Bayesian resilience and meta-d' evidence.",
   icons: {
