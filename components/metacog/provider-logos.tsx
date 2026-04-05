@@ -78,15 +78,24 @@ export const DeepSeekLogo = ({ size = 20, ...props }: LogoProps) => (
   </svg>
 );
 
-export const GLMLogo = ({ size = 20, ...props }: LogoProps) => (
+export const GLMLogo = ({ size = 20, style, ...props }: LogoProps) => (
   <svg
     width={size}
     height={size}
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
+    style={{ filter: "invert(1) brightness(2.2) contrast(1.3)", ...style }}
     {...props}
   >
-    <image href="/images/images.jpeg" x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" />
+    <image
+      href="/images/zlm.svg"
+      x="0"
+      y="0"
+      width="100"
+      height="100"
+      preserveAspectRatio="xMidYMid meet"
+      style={{ filter: "invert(1) brightness(2.2) contrast(1.3)", ...style }}
+    />
   </svg>
 );
 
