@@ -110,11 +110,7 @@ export default function MetacogDashboard() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              {mode === "static" ? (
-                <MetacogPlotlyChart data={results as any} type="static" />
-              ) : (
-                <MetacogPlotlyChart data={results as any} type="dynamic" />
-              )}
+              <MetacogPlotlyChart data={results} type={mode} />
             </CardContent>
           </Card>
         </section>
