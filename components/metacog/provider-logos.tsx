@@ -94,7 +94,6 @@ export const GLMLogo = ({ size = 20, style, ...props }: LogoProps) => (
       width="100"
       height="100"
       preserveAspectRatio="xMidYMid meet"
-      style={{ filter: "invert(1) brightness(2.2) contrast(1.3)", ...style }}
     />
   </svg>
 );
