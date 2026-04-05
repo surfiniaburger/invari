@@ -189,6 +189,50 @@ export default function MetacogDashboard() {
           </div>
         </section>
 
+        <section className="mt-16">
+          <Card className="border-white/10 bg-white/5">
+            <CardHeader>
+              <CardTitle className="text-white">How to Read the Benchmark</CardTitle>
+              <CardDescription className="text-white/60">
+                A compact guide to the plots, metrics, and methodology.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-6 text-sm text-white/70">
+              <div className="grid gap-3">
+                <p>
+                  This benchmark isolates <strong>metacognitive control</strong> from raw accuracy by
+                  measuring whether a model can calibrate confidence, detect errors, and update beliefs
+                  under evidence pressure. We compute signal‑detection metrics (meta‑d′, m‑ratio) alongside
+                  multi‑turn resilience scores to separate competence from self‑monitoring.
+                </p>
+                <p>
+                  The reliability diagram uses trial‑level confidence bins reconstructed from `kbench`
+                  logs, ensuring that each plotted point corresponds to a real correctness rate for a
+                  given confidence bin. This yields a true calibration curve against the perfect‑calibration
+                  diagonal.
+                </p>
+              </div>
+              <Separator className="bg-white/10" />
+              <div className="grid gap-2">
+                <p className="text-xs uppercase tracking-[0.2em] text-white/40">Reading the Plots</p>
+                <ul className="grid gap-2 text-white/70">
+                  <li>Accuracy vs. M‑Ratio: high accuracy + high m‑ratio indicates AGI‑aligned monitoring.</li>
+                  <li>Calibration Curve: deviations below the diagonal indicate overconfidence.</li>
+                  <li>M‑Ratio Shift: large negative deltas signal susceptibility to evidence pressure.</li>
+                </ul>
+              </div>
+              <div className="flex flex-col gap-2 text-xs text-white/50">
+                <span>References: Burnell et al. (2026); Fleming &amp; Lau (2014).</span>
+              </div>
+              <Button asChild variant="outline" className="w-full">
+                <a href="https://kaggle.com/competitions/kaggle-measuring-agi/writeups/new-writeup-1775057478716">
+                  Read full Kaggle write‑up
+                </a>
+              </Button>
+            </CardContent>
+          </Card>
+        </section>
+
         <section id="method" className="mt-16">
           <Card className="border-white/10 bg-white/5">
             <CardHeader>

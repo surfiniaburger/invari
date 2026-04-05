@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import { useScroll, useTransform, motion, AnimatePresence } from "framer-motion";
 import { BenchmarkResults, getProviderInfo } from "@/lib/metacog";
-import { ProviderLogoMap } from "./provider-logos";
+import { ProviderLogoMap, GLMLogo, DeepSeekLogo } from "./provider-logos";
 
 /**
  * StickyScrollReveal (The "Wow" Factor)
@@ -84,7 +84,12 @@ export const StickyScrollReveal = ({ data }: Props) => {
             <div className="relative h-full w-full grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 z-10">
                 {Object.entries(data).slice(0, 8).map(([id, model], index) => {
                     const info = getProviderInfo(id);
-                    const Logo = ProviderLogoMap[info.provider];
+                    const Logo =
+                      info.label.includes("GLM")
+                        ? GLMLogo
+                        : info.label.includes("DeepSeek")
+                          ? DeepSeekLogo
+                          : ProviderLogoMap[info.provider];
                     
                     const s_m = model.static?.m_ratio || 0.5;
                     const d_m = model.multiturn_v2?.overall?.m_ratio || 0.2;
