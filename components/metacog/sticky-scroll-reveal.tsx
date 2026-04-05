@@ -119,7 +119,7 @@ export const StickyScrollReveal = ({ data }: Props) => {
                               className="mb-4"
                               style={{
                                 color: info.color,
-                                filter: isGlm ? "invert(1) brightness(1.35) contrast(1.1)" : "none",
+                                filter: isGlm ? "invert(1) brightness(2.2) contrast(1.3)" : "none",
                               }}
                             />
                             <span className="text-[11px] font-bold text-white tracking-widest uppercase truncate w-full text-center">
