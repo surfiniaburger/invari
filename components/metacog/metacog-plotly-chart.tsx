@@ -16,18 +16,20 @@ export const MetacogPlotlyChart = ({ data, type }: Props) => {
     openai: "/images/chatgpt-4.svg",
     anthropic: "/images/anthropic-1.svg",
     google: "/images/gemini-icon-logo.svg",
-    glm: "/images/images.jpeg",
+  };
+
+  const modelIcons: Record<string, string> = {
+    "DeepSeek V3.2": "/images/deepseek-2.svg",
+    "DeepSeek V3.1": "/images/deepseek-2.svg",
+    "GLM-5": "/images/images.jpeg",
   };
 
   const getIconForModel = (payload: { provider?: string; label?: string }) => {
     if (payload.provider && providerIcons[payload.provider]) {
       return providerIcons[payload.provider];
     }
-    if (payload.label?.toLowerCase().includes("glm")) {
-      return providerIcons.glm;
-    }
-    if (payload.label?.toLowerCase().includes("deepseek")) {
-      return "/images/deepseek-2.svg";
+    if (payload.label && modelIcons[payload.label]) {
+      return modelIcons[payload.label];
     }
     return null;
   };

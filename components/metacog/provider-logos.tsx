@@ -78,6 +78,17 @@ export const DeepSeekLogo = ({ size = 20, ...props }: LogoProps) => (
   </svg>
 );
 
+export const GLMLogo = ({ size = 20, ...props }: LogoProps) => (
+  <img
+    src="/images/images.jpeg"
+    width={size}
+    height={size}
+    alt="GLM"
+    style={{ width: size, height: size }}
+    {...props}
+  />
+);
+
 export const ProviderLogoMap: Record<string, React.FC<LogoProps>> = {
   anthropic: AnthropicLogo,
   google: GoogleLogo,
