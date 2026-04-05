@@ -17,6 +17,24 @@ export const metadata: Metadata = {
   title: "In-vari | Metacognitive Control for Frontier Models",
   description:
     "Investor-grade evaluation of metacognitive control in frontier models, with Bayesian resilience and meta-d' evidence.",
+  icons: {
+    icon: "/images/in-varia-mark.svg",
+    shortcut: "/images/in-varia-mark.svg",
+    apple: "/images/in-varia-mark.svg",
+  },
+  openGraph: {
+    title: "In-vari | Metacognitive Control for Frontier Models",
+    description:
+      "Investor-grade evaluation of metacognitive control in frontier models, with Bayesian resilience and meta-d' evidence.",
+    images: ["/images/in-varia-mark.svg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "In-vari | Metacognitive Control for Frontier Models",
+    description:
+      "Investor-grade evaluation of metacognitive control in frontier models, with Bayesian resilience and meta-d' evidence.",
+    images: ["/images/in-varia-mark.svg"],
+  },
 };
 
 export default function RootLayout({

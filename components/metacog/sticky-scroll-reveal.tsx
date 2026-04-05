@@ -84,8 +84,9 @@ export const StickyScrollReveal = ({ data }: Props) => {
             <div className="relative h-full w-full grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 z-10">
                 {Object.entries(data).slice(0, 8).map(([id, model], index) => {
                     const info = getProviderInfo(id);
+                    const isGlm = info.label.includes("GLM");
                     const Logo =
-                      info.label.includes("GLM")
+                      isGlm
                         ? GLMLogo
                         : info.label.includes("DeepSeek")
                           ? DeepSeekLogo
@@ -113,7 +114,14 @@ export const StickyScrollReveal = ({ data }: Props) => {
                           whileInView={{ opacity: 1 }}
                           transition={{ delay: index * 0.05 }}
                         >
-                            <Logo size={28} className="mb-4" style={{ color: info.color }} />
+                            <Logo
+                              size={28}
+                              className="mb-4"
+                              style={{
+                                color: info.color,
+                                filter: isGlm ? "invert(1) brightness(2.2) contrast(1.3)" : "none",
+                              }}
+                            />
                             <span className="text-[11px] font-bold text-white tracking-widest uppercase truncate w-full text-center">
                                 {info.label.split(' ')[0]}
                             </span>

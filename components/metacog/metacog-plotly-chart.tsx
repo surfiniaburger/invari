@@ -21,7 +21,7 @@ export const MetacogPlotlyChart = ({ data, type }: Props) => {
   const modelIcons: Record<string, string> = {
     "DeepSeek V3.2": "/images/deepseek-2.svg",
     "DeepSeek V3.1": "/images/deepseek-2.svg",
-    "GLM-5": "/images/images.jpeg",
+    "GLM-5": "/images/zlm.svg",
   };
 
   const getIconForModel = (payload: { provider?: string; label?: string }) => {
@@ -34,9 +34,12 @@ export const MetacogPlotlyChart = ({ data, type }: Props) => {
     return null;
   };
 
-  const getIconFilter = (payload: { provider?: string }) => {
+  const getIconFilter = (payload: { provider?: string; label?: string }) => {
     if (payload.provider === "openai") {
       return "invert(1) brightness(1.35) contrast(1.1)";
+    }
+    if (payload.label?.includes("GLM")) {
+      return "invert(1) brightness(2.2) contrast(1.3)";
     }
     return "none";
   };
