@@ -79,14 +79,15 @@ export const DeepSeekLogo = ({ size = 20, ...props }: LogoProps) => (
 );
 
 export const GLMLogo = ({ size = 20, ...props }: LogoProps) => (
-  <img
-    src="/images/images.jpeg"
+  <svg
     width={size}
     height={size}
-    alt="GLM"
-    style={{ width: size, height: size }}
+    viewBox="0 0 100 100"
+    xmlns="http://www.w3.org/2000/svg"
     {...props}
-  />
+  >
+    <image href="/images/images.jpeg" x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" />
+  </svg>
 );
 
 export const ProviderLogoMap: Record<string, React.FC<LogoProps>> = {
