@@ -30,7 +30,7 @@ const logoFilters: Record<string, string> = {
   "/images/zlm.svg": "invert(1) brightness(2.2) contrast(1.3)",
 };
 
-function ModelPoint(props: any) {
+function ModelPoint(props: { cx?: number; cy?: number; payload?: { name: string; logo: string } }) {
   const { cx, cy, payload } = props;
   if (cx === undefined || cy === undefined) return null;
   const size = 26;
