@@ -129,7 +129,7 @@ export default function MetacogDashboard() {
               </CardHeader>
               <CardContent className="pt-6">
                 <div className="h-[400px] w-full">
-                  <MRatioShiftChart data={results as any} />
+                  <MRatioShiftChart data={results} />
                 </div>
               </CardContent>
             </Card>
