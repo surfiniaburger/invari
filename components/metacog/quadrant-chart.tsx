@@ -32,7 +32,7 @@ const logoFilters: Record<string, string> = {
 
 function ModelPoint(props: { cx?: number; cy?: number; payload?: { name: string; logo: string } }) {
   const { cx, cy, payload } = props;
-  if (cx === undefined || cy === undefined) return null;
+  if (cx === undefined || cy === undefined || !payload) return null;
   const size = 26;
   const info = getProviderInfo(payload.name);
   const filter = logoFilters[payload.logo] ?? "";
