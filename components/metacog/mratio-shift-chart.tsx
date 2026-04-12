@@ -12,11 +12,18 @@ interface Props {
 }
 
 export function MRatioShiftChart({ data }: Props) {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
+
   const chartData = useMemo(() => formatMRatioShiftData(data), [data]);
+
+  if (!mounted) {
+    return <div className="h-[400px] w-full bg-white/5 animate-pulse rounded-xl" />;
+  }
 
   return (
     <div className="h-[400px] w-full">
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="100%" minHeight={400} minWidth={0}>
         <ComposedChart data={chartData} margin={{ left: 20, right: 24, top: 40, bottom: 60 }}>
           <CartesianGrid vertical={false} strokeDasharray="4 4" stroke="var(--border)" />
           <XAxis

@@ -19,6 +19,9 @@ type CalibrationBins = Record<
 >;
 
 export function CalibrationCurveChart({ mode = "static" }: Props) {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
+
   const { chartData, models } = useMemo(() => {
     const bins = Array.from({ length: 6 }, (_, index) => ({
       bin: index + 1,
@@ -46,6 +49,10 @@ export function CalibrationCurveChart({ mode = "static" }: Props) {
 
     return { chartData: data, models: entries };
   }, [mode]);
+
+  if (!mounted) {
+    return <div className="h-[320px] w-full bg-white/5 animate-pulse rounded-xl" />;
+  }
 
   return (
     <ChartContainer
