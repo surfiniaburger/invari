@@ -43,8 +43,21 @@ export interface ModelData {
   multiturn_v2: MultiTurnMetrics;
 }
 
+export interface MCSBMetrics {
+  name: string;
+  tier2_m_ratio: number;
+  tier3_alignment: number;
+  raw_score: number;
+  kaggle_score: number;
+  logo: string;
+}
+
 export interface BenchmarkResults {
   [modelId: string]: ModelData;
+}
+
+export interface MCSBResults {
+  [modelId: string]: MCSBMetrics;
 }
 
 const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value));

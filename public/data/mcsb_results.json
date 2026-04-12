@@ -1,0 +1,66 @@
+{
+  "openai/gpt-5.4-2026-03-05": {
+    "name": "GPT-5.4",
+    "tier2_m_ratio": 0.393,
+    "tier3_alignment": 0.442,
+    "raw_score": 0.7327,
+    "kaggle_score": 0.6862,
+    "logo": "/images/chatgpt-4.svg"
+  },
+  "google/gemini-3.1-pro-preview": {
+    "name": "Gemini 3.1 Pro",
+    "tier2_m_ratio": 0.385,
+    "tier3_alignment": 0.364,
+    "raw_score": 0.7095,
+    "kaggle_score": 0.6676,
+    "logo": "/images/gemini-icon-logo.svg"
+  },
+  "google/gemini-3-flash-preview": {
+    "name": "Gemini 3 Flash",
+    "tier2_m_ratio": 1.018,
+    "tier3_alignment": 0.378,
+    "raw_score": 0.6714,
+    "kaggle_score": 0.6371,
+    "logo": "/images/gemini-icon-logo.svg"
+  },
+  "anthropic/claude-opus-4-6@default": {
+    "name": "Claude Opus 4.6",
+    "tier2_m_ratio": 1.793,
+    "tier3_alignment": 0.122,
+    "raw_score": 0.6468,
+    "kaggle_score": 0.6175,
+    "logo": "/images/anthropic-1.svg"
+  },
+  "google/gemini-3.1-flash-lite-preview": {
+    "name": "Gemini 3.1 Flash-Lite",
+    "tier2_m_ratio": 0.010,
+    "tier3_alignment": 0.254,
+    "raw_score": 0.6305,
+    "kaggle_score": 0.6044,
+    "logo": "/images/gemini-icon-logo.svg"
+  },
+  "anthropic/claude-sonnet-4-6@default": {
+    "name": "Claude Sonnet 4.6",
+    "tier2_m_ratio": 1.814,
+    "tier3_alignment": 0.480,
+    "raw_score": 0.6214,
+    "kaggle_score": 0.5971,
+    "logo": "/images/anthropic-1.svg"
+  },
+  "google/gemini-2.5-flash": {
+    "name": "Gemini 2.5 Flash",
+    "tier2_m_ratio": 0.516,
+    "tier3_alignment": 0.366,
+    "raw_score": 0.6202,
+    "kaggle_score": 0.5961,
+    "logo": "/images/gemini-icon-logo.svg"
+  },
+  "deepseek-ai/deepseek-v3.2": {
+    "name": "DeepSeek V3.2",
+    "tier2_m_ratio": 0.000,
+    "tier3_alignment": 0.418,
+    "raw_score": 0.5429,
+    "kaggle_score": 0.5343,
+    "logo": "/images/deepseek-2.svg"
+  }
+}

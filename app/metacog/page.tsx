@@ -5,32 +5,27 @@ import { MetacogPlotlyChart } from "@/components/metacog/metacog-plotly-chart";
 import { CalibrationCurveChart } from "@/components/metacog/calibration-curve-chart";
 import { MRatioShiftChart } from "@/components/metacog/mratio-shift-chart";
 import { StickyScrollReveal } from "@/components/metacog/sticky-scroll-reveal";
-import { BenchmarkResults, getProviderInfo } from "@/lib/metacog";
+import { QuadrantChart } from "@/components/metacog/quadrant-chart";
+import { getProviderInfo, BenchmarkResults, MCSBResults } from "@/lib/metacog";
 import resultsAggregated from "@/public/data/results_aggregated.json";
 import calibrationBins from "@/public/data/calibration_bins.json";
+import mcsbResults from "@/public/data/mcsb_results.json";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
-
-/**
- * Metacognitive Benchmark Dashboard
- * 
- * Follows Code as Communication / Modular Design (Dave Farley):
- * - Clear separation of data visualization and research context.
- * - Interactive tabs to explore the "Metacognitive Capability Gap".
- */
 
 export default function MetacogDashboard() {
   const [mode, setMode] = useState<"static" | "dynamic">("static");
+  const mcsbData = mcsbResults as unknown as MCSBResults;
   const results = React.useMemo(() => {
     const data = { ...resultsAggregated } as unknown as BenchmarkResults;
-    
+
     // Merge binned data
     Object.entries(calibrationBins).forEach(([id, bins]) => {
-      // Find the corresponding model by ID or Label
-      const modelEntry = Object.entries(data).find(([key, val]) => 
+      const modelEntry = Object.entries(data).find(([key, val]) =>
         key === id || (val as any).name === id || getProviderInfo(id).label === key
       );
 
@@ -56,9 +51,8 @@ export default function MetacogDashboard() {
             IN-VARIA
           </a>
           <div className="hidden items-center gap-6 text-xs uppercase tracking-[0.2em] text-white/50 md:flex">
-            <a href="#overview" className="transition hover:text-white">Overview</a>
-            <a href="#results" className="transition hover:text-white">Results</a>
-            <a href="#diagnostics" className="transition hover:text-white">Diagnostics</a>
+            <a href="#general" className="transition hover:text-white">General</a>
+            <a href="#safety" className="transition hover:text-white">Safety</a>
             <a href="#method" className="transition hover:text-white">Method</a>
           </div>
           <Button asChild className="rounded-full px-6">
@@ -68,126 +62,138 @@ export default function MetacogDashboard() {
       </nav>
 
       <main className="mx-auto max-w-6xl px-6 py-20 pb-32">
-        <header id="overview" className="mb-16 flex flex-col gap-6">
+        <header className="mb-16 flex flex-col gap-6">
           <Badge variant="outline" className="border-white/20 bg-white/5 text-white/70">
-            Metacognitive Control · Report v3
+            Metacognitive Control · Report v3.2
           </Badge>
           <h1 className="text-4xl font-semibold text-white sm:text-6xl">
-            Metacognitive Efficiency Profile
+            Metacognitive Capability
           </h1>
           <p className="max-w-3xl text-base text-white/60 sm:text-lg">
-            A structured evaluation of frontier models under static calibration and dynamic evidence pressure,
-            revealing the capability chasm between accuracy and self-monitoring.
+            Empirical isolation of self-monitoring from raw accuracy across foundational and safety-critical domains.
           </p>
         </header>
 
-        <section className="mb-24 overflow-hidden rounded-[4rem] border border-white/5">
-          <StickyScrollReveal data={results} />
-        </section>
+        {/* --- SECTION A: GENERAL --- */}
+        <section id="general" className="mb-32">
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold text-white">Section A: General Metacognition</h2>
+            <p className="mt-1 text-sm text-white/50 italic">
+              Baseline capability on standard logic and multi-turn reasoning tasks.
+            </p>
+          </div>
 
-        <section id="results" className="flex flex-col gap-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div className="space-y-1">
-              <h2 className="text-xl font-semibold text-white">Results</h2>
-              <p className="text-sm text-white/50">Unified view across the report.</p>
+          <div className="mb-24 overflow-hidden rounded-[4rem] border border-white/5">
+            <StickyScrollReveal data={results} />
+          </div>
+
+          <div className="grid gap-6">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <div className="space-y-1">
+                <h3 className="text-lg font-medium text-white/80">Calibration Depth</h3>
+                <p className="text-xs text-white/40">Static vs. Dynamic monitoring efficiency.</p>
+              </div>
+              <Tabs value={mode} onValueChange={(value) => setMode(value as "static" | "dynamic")}>
+                <TabsList className="border border-white/10 bg-white/5">
+                  <TabsTrigger value="static">Static</TabsTrigger>
+                  <TabsTrigger value="dynamic">Dynamic</TabsTrigger>
+                </TabsList>
+              </Tabs>
             </div>
-            <Tabs value={mode} onValueChange={(value) => setMode(value as "static" | "dynamic")}>
-              <TabsList className="border border-white/10 bg-white/5">
-                <TabsTrigger value="static">
-                  Static (Turn 1)
-                </TabsTrigger>
-                <TabsTrigger value="dynamic">
-                  Dynamic (Turn 2)
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </div>
-          <Card className="border-white/10 bg-white/5">
-            <CardHeader>
-              <CardTitle className="text-white">Accuracy vs. Metacognition</CardTitle>
-              <CardDescription className="text-white/60">
-                The capability chasm is visible when m-ratio is plotted against accuracy.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <MetacogPlotlyChart data={results} type={mode} />
-            </CardContent>
-          </Card>
-        </section>
 
-        <section className="mt-12">
-          <Card className="border-white/10 bg-white/5">
-            <CardHeader>
-              <CardTitle className="text-white">Executive Summary</CardTitle>
-              <CardDescription className="text-white/60">
-                Highlights from static calibration and dynamic resilience.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-4 text-sm text-white/70">
-              <div className="flex items-center justify-between">
-                <span>Best m-ratio (static)</span>
-                <span className="text-white">1.31</span>
-              </div>
-              <Separator className="bg-white/10" />
-              <div className="flex items-center justify-between">
-                <span>Dynamic resilience range</span>
-                <span className="text-white">0.74 – 0.91</span>
-              </div>
-              <Separator className="bg-white/10" />
-              <div className="flex items-center justify-between">
-                <span>Calibration gap (ECE)</span>
-                <span className="text-white">0.02 – 0.20</span>
-              </div>
-              <Button asChild className="mt-6 w-full rounded-full">
-                <a href="mailto:ade@in-varia.com?subject=Request%20Demo">Request Demo</a>
-              </Button>
-            </CardContent>
-          </Card>
-        </section>
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Card className="border-white/10 bg-transparent">
+                <CardHeader>
+                  <CardTitle className="text-sm font-medium text-white/90">Reliability Diagram</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CalibrationCurveChart mode={mode} />
+                </CardContent>
+              </Card>
+              <Card className="border-white/10 bg-transparent">
+                <CardHeader>
+                  <CardTitle className="text-sm font-medium text-white/90">Sensitivity vs Accuracy</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <MetacogPlotlyChart data={results} type={mode} />
+                </CardContent>
+              </Card>
+            </div>
 
-        <section id="diagnostics" className="mt-16">
-          <div className="mb-12 text-center">
-            <Badge variant="outline" className="mb-4 border-emerald-500/30 bg-emerald-500/5 text-emerald-400">
-              Diagnostic Suite
-            </Badge>
-            <h2 className="text-3xl font-semibold text-white">Through the Looking Glass</h2>
-            <p className="mt-2 text-white/50 italic">Revealing the internal monitoring reality behind the accuracy mask.</p>
-          </div>
-          
-          <div className="grid gap-6 lg:grid-cols-2">
-          <Card className="border-white/10 bg-white/5">
-            <CardHeader>
-              <CardTitle className="text-white">Calibration Curve</CardTitle>
-              <CardDescription className="text-white/60">
-                Reliability diagram from confidence bins (Turn 1 vs Turn 2).
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center justify-between text-xs text-white/50">
-                <span>Mode</span>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                  {mode === "static" ? "Static (Turn 1)" : "Dynamic (Turn 2)"}
-                </span>
-              </div>
-              <div className="mt-6">
-                <CalibrationCurveChart mode={mode} />
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-white/10 bg-white/5">
-            <CardHeader>
-              <CardTitle className="text-white">M-Ratio Shift</CardTitle>
-              <CardDescription className="text-white/60">
-                Evidence-driven change in monitoring.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <MRatioShiftChart data={results as any} />
-            </CardContent>
+            <Card className="border-white/10 bg-white/5">
+              <CardHeader>
+                <CardTitle className="text-white">M-Ratio Shift</CardTitle>
+                <CardDescription className="text-white/60 text-xs">
+                  Evidence-driven change in monitoring efficiency across models.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <div className="h-[400px] w-full">
+                  <MRatioShiftChart data={results as any} />
+                </div>
+              </CardContent>
             </Card>
           </div>
         </section>
+
+        {/* --- SECTION B: SAFETY --- */}
+        <section id="safety" className="mb-32">
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold text-white">Section B: Code-Security Trustworthiness</h2>
+            <Badge variant="outline" className="mt-2 border-rose-500/30 bg-rose-500/5 text-rose-400">
+              MCSB v2 Adversarial Result
+            </Badge>
+            <p className="mt-4 text-sm text-white/60">
+              This section isolates directionally correct belief updates within a high-stakes domain (code security).
+              Significant monitoring collapse is observed under adversarial evidence pressure.
+            </p>
+          </div>
+
+          <div className="grid gap-6">
+            <Card className="border-white/10 bg-white/5">
+              <CardHeader>
+                <CardTitle className="text-white">Sensitivity vs. Adversarial Resilience</CardTitle>
+                <CardDescription className="text-white/60 text-xs">
+                  X-Axis: Tier 3 Alignment (%) · Y-Axis: Tier 2 Foundational Sensitivity (M-Ratio)
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <QuadrantChart data={mcsbData} />
+              </CardContent>
+            </Card>
+
+            <Card className="border-emerald-500/10 bg-emerald-500/5">
+              <CardHeader>
+                <CardTitle className="text-emerald-400/90 text-sm">Empirical Comparative Summary</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow className="border-white/10 hover:bg-transparent">
+                        <TableHead className="text-white/40 min-w-[120px]">Model</TableHead>
+                        <TableHead className="text-white/40">T2 Sensitivity</TableHead>
+                        <TableHead className="text-white/40 text-rose-400">T3 Alignment</TableHead>
+                        <TableHead className="text-white/40">Aggregated</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {Object.values(mcsbData).sort((a, b) => b.raw_score - a.raw_score).map((m) => (
+                        <TableRow key={m.name} className="border-white/5 hover:bg-white/5 transition-colors">
+                          <TableCell className="font-medium text-white/90 py-4 whitespace-nowrap">{m.name}</TableCell>
+                          <TableCell className="text-white/60 font-mono text-xs">{m.tier2_m_ratio.toFixed(3)}</TableCell>
+                          <TableCell className="text-rose-400 font-mono text-xs">{m.tier3_alignment.toFixed(3)}</TableCell>
+                          <TableCell className="text-emerald-400 font-mono text-xs">{m.raw_score.toFixed(3)}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table> 
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
 
         <section className="mt-16">
           <Card className="border-white/10 bg-white/5">
@@ -219,6 +225,7 @@ export default function MetacogDashboard() {
                   <li>Accuracy vs. M‑Ratio: high accuracy + high m‑ratio indicates AGI‑aligned monitoring.</li>
                   <li>Calibration Curve: deviations below the diagonal indicate overconfidence.</li>
                   <li>M‑Ratio Shift: large negative deltas signal susceptibility to evidence pressure.</li>
+                  <li>Quadrant Chart: resilience vs. sensitivity separates stable leaders from brittle or swayable models.</li>
                 </ul>
               </div>
               <div className="flex flex-col gap-2 text-xs text-white/50">

@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://in-varia.com"),
   title: "In-varia | Metacognitive Control for Frontier Models",
   description:
     "Investor-grade evaluation of metacognitive control in frontier models, with Bayesian resilience and meta-d' evidence.",
