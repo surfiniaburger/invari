@@ -26,7 +26,7 @@ export default function MetacogDashboard() {
     // Merge binned data
     Object.entries(calibrationBins).forEach(([id, bins]) => {
       const modelEntry = Object.entries(data).find(([key, val]) =>
-        key === id || (val as any).name === id || getProviderInfo(id).label === key
+        key === id || val.name === id || getProviderInfo(id).label === key
       );
 
       if (modelEntry) {
