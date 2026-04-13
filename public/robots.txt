@@ -1,0 +1,6 @@
+# Standard Robots.txt for In-Varia Research
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://in-varia.com/sitemap.xml
