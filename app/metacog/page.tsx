@@ -6,6 +6,8 @@ import { CalibrationCurveChart } from "@/components/metacog/calibration-curve-ch
 import { MRatioShiftChart } from "@/components/metacog/mratio-shift-chart";
 import { StickyScrollReveal } from "@/components/metacog/sticky-scroll-reveal";
 import { QuadrantChart } from "@/components/metacog/quadrant-chart";
+import { JsonLd } from "@/components/metacog/json-ld";
+import { FaqSection } from "@/components/metacog/faq-section";
 import { getProviderInfo, BenchmarkResults, MCSBResults } from "@/lib/metacog";
 import resultsAggregated from "@/public/data/results_aggregated.json";
 import calibrationBins from "@/public/data/calibration_bins.json";
@@ -45,6 +47,7 @@ export default function MetacogDashboard() {
 
   return (
     <div className="min-h-screen text-white font-sans selection:bg-white/10">
+      <JsonLd />
       <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <a href="/" className="text-sm font-semibold tracking-[0.3em] text-white/70">
@@ -67,10 +70,10 @@ export default function MetacogDashboard() {
             Metacognitive Control · Report v3.2
           </Badge>
           <h1 className="text-4xl font-semibold text-white sm:text-6xl">
-            Metacognitive Capability
+            Metacognitive Coding Safety Benchmark (MCSB)
           </h1>
           <p className="max-w-3xl text-base text-white/60 sm:text-lg">
-            Empirical isolation of self-monitoring from raw accuracy across foundational and safety-critical domains.
+            The MCSB v2 is a 1,030-trial diagnostic suite that isolates an AI model's self-monitoring (metacognition) from its raw accuracy. We measure the "Metacognitive Domain Chasm"—the gap between foundational logic calibration and adversarial code-security awareness.
           </p>
         </header>
 
@@ -240,36 +243,7 @@ export default function MetacogDashboard() {
           </Card>
         </section>
 
-        <section id="method" className="mt-16">
-          <Card className="border-white/10 bg-white/5">
-            <CardHeader>
-              <CardTitle className="text-white">Method Notes</CardTitle>
-              <CardDescription className="text-white/60">
-                Meta-d′ from type-2 ROC AUC. Bayesian resilience from evidence-weighted updates.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="grid gap-6 text-sm text-white/70 md:grid-cols-3">
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-white/40">Static</p>
-                <p className="mt-2">
-                  200 forced-choice traps with 1–6 confidence bins, isolating calibration from raw accuracy.
-                </p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-white/40">Dynamic</p>
-                <p className="mt-2">
-                  Positive, negative, and neutral evidence injections to probe belief stability.
-                </p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-white/40">Reliability</p>
-                <p className="mt-2">
-                  Five-seed bootstrap CI for repeatability of m-ratio estimates.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
+        <FaqSection />
       </main>
     </div>
   );
