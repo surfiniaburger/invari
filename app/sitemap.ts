@@ -6,13 +6,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: '2026-04-13',
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
       url: `${baseUrl}/metacog`,
-      lastModified: new Date(),
+      lastModified: '2026-04-13',
       changeFrequency: 'weekly',
       priority: 0.8,
     },
