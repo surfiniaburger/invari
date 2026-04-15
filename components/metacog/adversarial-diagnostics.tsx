@@ -14,6 +14,7 @@ import {
   LabelList,
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { getProviderInfo } from "@/lib/metacog";
 
 // --- EMPIRICAL DATA FROM LOGS ---
 const tierData = [
@@ -44,7 +45,7 @@ const tierData = [
     shift: -0.092,
   },
   {
-    name: "Gemini 3.Pro",
+    name: "Gemini 3.1 Pro",
     t1_acc: 0.929,
     t2_acc: 0.891,
     t3_acc: 0.51,
@@ -113,10 +114,14 @@ export function AdversarialDiagnostics() {
                   itemStyle={{ fontSize: "11px" }}
                 />
                 <Legend iconType="circle" wrapperStyle={{ fontSize: "11px", marginTop: "10px", color: "#ffffff90" }} />
-                <Bar dataKey="GPT-5.4" fill="#10b981" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="Claude Opus 4.6" fill="#f43f5e" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="Gemini 3.Pro" fill="#3b82f6" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="DeepSeek V3.2" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
+                {tierData.map((model) => (
+                  <Bar 
+                    key={model.name} 
+                    dataKey={model.name} 
+                    fill={getProviderInfo(model.name).color} 
+                    radius={[4, 4, 0, 0]} 
+                  />
+                ))}
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
