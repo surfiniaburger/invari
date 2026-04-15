@@ -6,6 +6,7 @@ import { CalibrationCurveChart } from "@/components/metacog/calibration-curve-ch
 import { MRatioShiftChart } from "@/components/metacog/mratio-shift-chart";
 import { StickyScrollReveal } from "@/components/metacog/sticky-scroll-reveal";
 import { QuadrantChart } from "@/components/metacog/quadrant-chart";
+import { AdversarialDiagnostics } from "@/components/metacog/adversarial-diagnostics";
 import { JsonLd } from "@/components/metacog/json-ld";
 import { FaqSection } from "@/components/metacog/faq-section";
 import { getProviderInfo, BenchmarkResults, MCSBResults } from "@/lib/metacog";
@@ -56,6 +57,7 @@ export default function MetacogDashboard() {
           <div className="hidden items-center gap-6 text-xs uppercase tracking-[0.2em] text-white/50 md:flex">
             <a href="#general" className="transition hover:text-white">General</a>
             <a href="#safety" className="transition hover:text-white">Safety</a>
+            <a href="#diagnostics" className="transition hover:text-white">Diagnostics</a>
             <a href="#method" className="transition hover:text-white">Method</a>
           </div>
           <Button asChild className="rounded-full px-6">
@@ -73,7 +75,7 @@ export default function MetacogDashboard() {
             Metacognitive Coding Safety Benchmark (MCSB)
           </h1>
           <p className="max-w-3xl text-base text-white/60 sm:text-lg">
-            The MCSB v2 is a 1,030-trial diagnostic suite that isolates an AI model's self-monitoring (metacognition) from its raw accuracy. We measure the "Metacognitive Domain Chasm"—the gap between foundational logic calibration and adversarial code-security awareness.
+            The MCSB v2 is a 1,030-trial diagnostic suite that isolates an AI model's self-monitoring (metacognition) from its raw accuracy. We quantify cross-tier degradation (Δ accuracy) capturing the gap between baseline competence and adversarial robustness.
           </p>
         </header>
 
@@ -81,7 +83,7 @@ export default function MetacogDashboard() {
         <section id="general" className="mb-32">
           <div className="mb-12">
             <h2 className="text-2xl font-semibold text-white">Section A: General Metacognition</h2>
-            <p className="mt-1 text-sm text-white/50 italic">
+            <p className="mt-1 text-sm text-white/80 italic">
               Baseline capability on standard logic and multi-turn reasoning tasks.
             </p>
           </div>
@@ -146,9 +148,9 @@ export default function MetacogDashboard() {
             <Badge variant="outline" className="mt-2 border-rose-500/30 bg-rose-500/5 text-rose-400">
               MCSB v2 Adversarial Result
             </Badge>
-            <p className="mt-4 text-sm text-white/60">
+            <p className="mt-4 text-sm text-white/80">
               This section isolates directionally correct belief updates within a high-stakes domain (code security).
-              Significant monitoring collapse is observed under adversarial evidence pressure.
+              Significant cross-tier degradation (Δ accuracy) is observed under adversarial evidence pressure.
             </p>
           </div>
 
@@ -197,8 +199,23 @@ export default function MetacogDashboard() {
           </div>
         </section>
 
+        {/* --- SECTION C: DIAGNOSTICS --- */}
+        <section id="diagnostics" className="mb-32">
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold text-white">Section C: Adversarial Stress Test (Meta-Evaluation Framework)</h2>
+            <p className="mt-1 text-xs text-white/40 italic">
+              Inspired by cognitive evaluation frameworks for measuring robust generalization under distribution shift.
+            </p>
+            <p className="mt-4 text-sm text-white/80">
+              High-fidelity diagnostics revealing the internal representational stability of models. 
+              Patterns highlight the sharp transition from foundational logic to adversarial security scenarios.
+            </p>
+          </div>
+          <AdversarialDiagnostics />
+        </section>
 
-        <section className="mt-16">
+        {/* --- METHOD GUIDE --- */}
+        <section id="method" className="mt-16">
           <Card className="border-white/10 bg-white/5">
             <CardHeader>
               <CardTitle className="text-white">How to Read the Benchmark</CardTitle>
@@ -225,10 +242,13 @@ export default function MetacogDashboard() {
               <div className="grid gap-2">
                 <p className="text-xs uppercase tracking-[0.2em] text-white/40">Reading the Plots</p>
                 <ul className="grid gap-2 text-white/70">
-                  <li>Accuracy vs. M‑Ratio: high accuracy + high m‑ratio indicates AGI‑aligned monitoring.</li>
-                  <li>Calibration Curve: deviations below the diagonal indicate overconfidence.</li>
-                  <li>M‑Ratio Shift: large negative deltas signal susceptibility to evidence pressure.</li>
-                  <li>Quadrant Chart: resilience vs. sensitivity separates stable leaders from brittle or swayable models.</li>
+                  <li><strong>Accuracy vs. M‑Ratio</strong>: High accuracy + high m‑ratio indicates AGI‑aligned monitoring.</li>
+                  <li><strong>Calibration Curve</strong>: Deviations below the diagonal indicate overconfidence (miscalibration).</li>
+                  <li><strong>M‑Ratio Shift</strong>: Large negative deltas signal susceptibility to evidence pressure.</li>
+                  <li><strong>Quadrant Chart</strong>: Resilience vs. sensitivity separates stable leaders from brittle models.</li>
+                  <li><strong>Degradation Gap (Panel A)</strong>: Quantifies cross-tier degradation (Δ accuracy) capturing the gap between baseline competence and adversarial robustness.</li>
+                  <li><strong>Alignment Failure (Panel C)</strong>: Alignment is quantified via response consistency under perturbation, decomposed into underreaction (invariance to critical changes) and overreaction (sensitivity to irrelevant perturbations).</li>
+                  <li><strong>Confidence Shift (Δ)</strong>: Positive Δ indicates increased confidence under adversarial perturbation, suggesting miscalibrated belief updates or unstable internal representations.</li>
                 </ul>
               </div>
               <div className="flex flex-col gap-2 text-xs text-white/50">
