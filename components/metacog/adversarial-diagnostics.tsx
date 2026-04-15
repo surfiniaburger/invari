@@ -109,17 +109,18 @@ export function AdversarialDiagnostics() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#ffffff15" vertical={false} />
                 <XAxis dataKey="tier" stroke="#ffffff80" fontSize={11} tickLine={false} axisLine={false} />
                 <YAxis domain={[0, 1]} stroke="#ffffff80" fontSize={11} tickLine={false} axisLine={false} />
-                <Tooltip 
-                  contentStyle={{ backgroundColor: "#000", border: "1px solid #ffffff20", fontSize: "12px" }} 
+                <Tooltip
+                  contentStyle={{ backgroundColor: "#000", border: "1px solid #ffffff20", fontSize: "12px" }}
                   itemStyle={{ fontSize: "11px" }}
                 />
                 <Legend iconType="circle" wrapperStyle={{ fontSize: "11px", marginTop: "10px", color: "#ffffff90" }} />
                 {tierData.map((model) => (
-                  <Bar 
-                    key={model.name} 
-                    dataKey={model.name} 
-                    fill={getProviderInfo(model.name).color} 
-                    radius={[4, 4, 0, 0]} 
+                  <Bar
+                    key={model.name}
+                    dataKey={model.name}
+                    name={getProviderInfo(model.name).label}
+                    fill={getProviderInfo(model.name).color}
+                    radius={[4, 4, 0, 0]}
                   />
                 ))}
               </BarChart>
@@ -139,7 +140,7 @@ export function AdversarialDiagnostics() {
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={calibrationData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#ffffff15" vertical={false} />
-                <XAxis dataKey="name" stroke="#ffffff80" fontSize={11} tickLine={false} axisLine={false} />
+                <XAxis dataKey="name" stroke="#ffffff80" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v) => getProviderInfo(v).label} />
                 <YAxis stroke="#ffffff80" fontSize={11} tickLine={false} axisLine={false} />
                 <Tooltip contentStyle={{ backgroundColor: "#000", border: "1px solid #ffffff20", fontSize: "12px" }} />
                 <Legend iconType="circle" wrapperStyle={{ fontSize: "11px", marginTop: "10px", color: "#ffffff90" }} />
@@ -162,7 +163,7 @@ export function AdversarialDiagnostics() {
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={tierData} margin={{ top: 20, right: 30, left: 0, bottom: 20 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#ffffff15" vertical={false} />
-                <XAxis dataKey="name" stroke="#ffffff80" fontSize={11} tickLine={false} axisLine={false} />
+                <XAxis dataKey="name" stroke="#ffffff80" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v) => getProviderInfo(v).label} />
                 <YAxis stroke="#ffffff80" fontSize={11} tickLine={false} axisLine={false} />
                 <Tooltip contentStyle={{ backgroundColor: "#000", border: "1px solid #ffffff20", fontSize: "12px" }} />
                 <Bar dataKey="alignment" name="Alignment Rate (%)" fill="#3b82f630" radius={[4, 4, 0, 0]}>
@@ -190,18 +191,18 @@ export function AdversarialDiagnostics() {
           </CardDescription>
         </CardHeader>
         <CardContent className="h-[250px] pb-12">
-           <ResponsiveContainer width="100%" height="100%">
-            <BarChart 
-              data={tierData} 
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              data={tierData}
               layout="vertical"
               margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
             >
               <CartesianGrid strokeDasharray="3 3" stroke="#10b98120" horizontal={false} />
               <XAxis type="number" domain={[-0.6, 0.6]} stroke="#10b98180" fontSize={11} />
-              <YAxis dataKey="name" type="category" stroke="#ffffff90" fontSize={11} width={100} />
-              <Tooltip 
+              <YAxis dataKey="name" type="category" stroke="#ffffff90" fontSize={11} width={100} tickFormatter={(v) => getProviderInfo(v).label} />
+              <Tooltip
                 cursor={{ fill: "#10b98110" }}
-                contentStyle={{ backgroundColor: "#000", border: "1px solid #10b98140", fontSize: "12px" }} 
+                contentStyle={{ backgroundColor: "#000", border: "1px solid #10b98140", fontSize: "12px" }}
               />
               <Bar dataKey="shift" name="Mean Conf Shift (Δ)" fill="#10b981" radius={[0, 4, 4, 0]}>
                 {tierData.map((entry, index) => (
