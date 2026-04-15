@@ -32,7 +32,7 @@ export function JsonLd() {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
     "headline": "Isolating the Metacognitive Domain Chasm: A Coding Safety Stress Test",
-    "description": "Research findings on how frontier models (GPT-5, Gemini 3.1 Pro, Claude Opus 4.6) maintain logic calibration but collapse in metacognitive sensitivity during adversarial code tasks.",
+    "description": "Research findings on how frontier models (GPT-5.4, Gemini 3.1 Pro, Claude Opus 4.6) maintain logic calibration but collapse in metacognitive sensitivity during adversarial code tasks.",
     "author": [
       {
         "@type": "Person",
