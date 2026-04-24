@@ -1,0 +1,96 @@
+{
+  "last_updated": "2026-04-24",
+  "archive": [
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "display_name": "Gemini 3.1 Pro",
+      "input_1m": 2.00,
+      "output_1m": 12.00,
+      "date": "2026-04-23",
+      "provider": "google",
+      "notes": "$2/$12 for <200k context"
+    },
+    {
+      "model": "google/gemini-3-flash-preview",
+      "display_name": "Gemini 3 Flash",
+      "input_1m": 0.50,
+      "output_1m": 3.00,
+      "date": "2026-04-23",
+      "provider": "google"
+    },
+    {
+      "model": "anthropic/claude-opus-4-7@default",
+      "display_name": "Claude Opus 4.7",
+      "input_1m": 5.00,
+      "output_1m": 25.00,
+      "date": "2026-04-15",
+      "provider": "anthropic"
+    },
+    {
+      "model": "anthropic/claude-opus-4-6@default",
+      "display_name": "Claude Opus 4.6",
+      "input_1m": 5.00,
+      "output_1m": 25.00,
+      "date": "2026-03-01",
+      "provider": "anthropic"
+    },
+    {
+      "model": "anthropic/claude-sonnet-4-6@default",
+      "display_name": "Claude Sonnet 4.6",
+      "input_1m": 3.00,
+      "output_1m": 15.00,
+      "date": "2026-03-01",
+      "provider": "anthropic"
+    },
+    {
+      "model": "openai/gpt-5.4-2026-03-05",
+      "display_name": "GPT-5.4",
+      "input_1m": 2.50,
+      "output_1m": 15.00,
+      "date": "2026-03-05",
+      "provider": "openai",
+      "notes": "$2.50/$15.00 for <272k context"
+    },
+    {
+      "model": "openai/gpt-5.4-mini",
+      "display_name": "GPT-5.4 Mini",
+      "input_1m": 0.75,
+      "output_1m": 4.50,
+      "date": "2026-04-01",
+      "provider": "openai"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v3.2",
+      "display_name": "DeepSeek V3.2",
+      "input_1m": 0.28,
+      "output_1m": 0.42,
+      "date": "2026-04-10",
+      "provider": "deepseek",
+      "notes": "Caching: $0.028 input hit"
+    },
+    {
+      "model": "deepseek-ai/deepseek-v3.1",
+      "display_name": "DeepSeek V3.1",
+      "input_1m": 0.28,
+      "output_1m": 0.42,
+      "date": "2026-01-10",
+      "provider": "deepseek"
+    },
+    {
+      "model": "google/gemini-3.1-flash-lite-preview",
+      "display_name": "Gemini 3.1 Flash-Lite",
+      "input_1m": 0.25,
+      "output_1m": 1.50,
+      "date": "2026-04-23",
+      "provider": "google"
+    },
+    {
+      "model": "google/gemini-2.5-flash",
+      "display_name": "Gemini 2.5 Flash",
+      "input_1m": 0.10,
+      "output_1m": 0.40,
+      "date": "2025-11-20",
+      "provider": "google"
+    }
+  ]
+}

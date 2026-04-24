@@ -70,6 +70,7 @@ export const PROVIDER_CONFIG: Record<
   { label: string; color: string; provider: "anthropic" | "google" | "openai" | "other" }
 > = {
   "Claude Opus 4.6": { label: "Claude Opus 4.6", color: "#6366f1", provider: "anthropic" },
+  "Claude Opus 4.7": { label: "Claude Opus 4.7", color: "#6366f1", provider: "anthropic" },
   "Claude Sonnet 4.6": { label: "Claude Sonnet 4.6", color: "#818cf8", provider: "anthropic" },
   "Gemini 3.1 Pro": { label: "Gemini 3.1 Pro", color: "#10b981", provider: "google" },
   "Gemini 3 Flash Preview": { label: "Gemini 3 Flash Preview", color: "#34d399", provider: "google" },
@@ -81,6 +82,7 @@ export const PROVIDER_CONFIG: Record<
   "DeepSeek V3.1": { label: "DeepSeek V3.1", color: "#22d3ee", provider: "other" },
   "GLM-5": { label: "GLM-5", color: "#f59e0b", provider: "other" },
   "anthropic/claude-opus-4-6@default": { label: "Claude Opus 4.6", color: "#6366f1", provider: "anthropic" },
+  "anthropic/claude-opus-4-7@default": { label: "Claude Opus 4.7", color: "#6366f1", provider: "anthropic" },
   "anthropic/claude-sonnet-4-6@default": { label: "Claude Sonnet 4.6", color: "#818cf8", provider: "anthropic" },
   "google/gemini-2.5-flash": { label: "Gemini 2.5 Flash", color: "#22c55e", provider: "google" },
   "google/gemini-3.1-flash-lite-preview": { label: "Gemini 3.1 Flash-Lite", color: "#6ee7b7", provider: "google" },
