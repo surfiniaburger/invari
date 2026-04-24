@@ -44,12 +44,12 @@ export function EfficiencyFrontierChart({ data }: Props) {
           <YAxis 
             type="number" 
             dataKey="accuracy" 
-            name="Accuracy" 
-            domain={[0.4, 1.0]}
+            name="Trust Score" 
+            domain={[0.4, 0.8]}
             axisLine={false}
             tickLine={false}
             tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10 }}
-            label={{ value: "Accuracy", angle: -90, position: "insideLeft", fill: "rgba(255,255,255,0.3)", fontSize: 10 }}
+            label={{ value: "Trust Score (MCSB v2)", angle: -90, position: "insideLeft", fill: "rgba(255,255,255,0.3)", fontSize: 10 }}
           />
           <ZAxis type="number" range={[50, 400]} />
           <Tooltip 
@@ -68,11 +68,11 @@ export function EfficiencyFrontierChart({ data }: Props) {
                     </div>
                     <div className="space-y-1">
                       <div className="flex justify-between gap-8">
-                        <span className="text-[10px] text-white/40">Accuracy:</span>
+                        <span className="text-[10px] text-white/40">Trust Score:</span>
                         <span className="text-xs font-mono text-emerald-400">{(d.accuracy * 100).toFixed(1)}%</span>
                       </div>
-                      <div className="flex justify-between gap-8">
-                        <span className="text-[10px] text-white/40">Cost/1k:</span>
+                      <div className="flex justify-between gap-8 border-t border-white/5 pt-1 mt-1">
+                        <span className="text-[10px] text-white/40 italic">Cost/1k trials:</span>
                         <span className="text-xs font-mono text-white/70">${d.costPer1k.toFixed(2)}</span>
                       </div>
                     </div>
@@ -86,15 +86,9 @@ export function EfficiencyFrontierChart({ data }: Props) {
             {chartData.map((entry, index) => (
               <Cell 
                 key={`cell-${index}`} 
-                fill={entry.name.includes("DeepSeek") || entry.name.includes("Flash") ? "#10b981" : "#3b82f6"} 
+                fill={getProviderInfo(entry.id).color} 
               />
             ))}
-            <LabelList 
-              dataKey="name" 
-              position="top" 
-              style={{ fill: "rgba(255,255,255,0.4)", fontSize: 8, fontFamily: 'monospace' }} 
-              offset={10}
-            />
           </Scatter>
         </ScatterChart>
       </ResponsiveContainer>
