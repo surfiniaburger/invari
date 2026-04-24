@@ -9,6 +9,7 @@ import { QuadrantChart } from "@/components/metacog/quadrant-chart";
 import { AdversarialDiagnostics } from "@/components/metacog/adversarial-diagnostics";
 import { JsonLd } from "@/components/metacog/json-ld";
 import { FaqSection } from "@/components/metacog/faq-section";
+import { SectionDEconomics } from "@/components/metacog/section-d-economics";
 import { getProviderInfo, BenchmarkResults, MCSBResults } from "@/lib/metacog";
 import resultsAggregated from "@/public/data/results_aggregated.json";
 import calibrationBins from "@/public/data/calibration_bins.json";
@@ -58,6 +59,7 @@ export default function MetacogDashboard() {
             <a href="#general" className="transition hover:text-white">General</a>
             <a href="#safety" className="transition hover:text-white">Safety</a>
             <a href="#diagnostics" className="transition hover:text-white">Diagnostics</a>
+            <a href="#economics" className="transition hover:text-white">Economics</a>
             <a href="#method" className="transition hover:text-white">Method</a>
           </div>
           <Button asChild className="rounded-full px-6">
@@ -214,6 +216,9 @@ export default function MetacogDashboard() {
           <AdversarialDiagnostics />
         </section>
 
+        {/* --- SECTION D: ECONOMICS --- */}
+        <SectionDEconomics />
+
         {/* --- METHOD GUIDE --- */}
         <section id="method" className="mt-16">
           <Card className="border-white/10 bg-white/5">
@@ -249,6 +254,9 @@ export default function MetacogDashboard() {
                   <li><strong>Degradation Gap (Panel A)</strong>: Quantifies cross-tier degradation (Δ accuracy) capturing the gap between baseline competence and adversarial robustness.</li>
                   <li><strong>Alignment Failure (Panel C)</strong>: Alignment is quantified via response consistency under perturbation, decomposed into underreaction (invariance to critical changes) and overreaction (sensitivity to irrelevant perturbations).</li>
                   <li><strong>Confidence Shift (Δ)</strong>: Positive Δ indicates increased confidence under adversarial perturbation, suggesting miscalibrated belief updates or unstable internal representations.</li>
+                  <li><strong>CVT Comparison (Panel D)</strong>: Measures the expected dollar amount required to extract one verified correct answer under adversarial conditions.</li>
+                  <li><strong>Efficiency Frontier (Panel D)</strong>: A Pareto analysis of Accuracy vs. Log‑Cost ($ per 1k trials) identifying optimal ROI leaders.</li>
+                  <li><strong>Monologue Tax (Panel D)</strong>: Breaks down token costs into base, reasoning (CoT), and metacognitive correction components.</li>
                 </ul>
               </div>
               <div className="flex flex-col gap-2 text-xs text-white/50">
