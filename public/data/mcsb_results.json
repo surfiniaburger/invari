@@ -31,6 +31,14 @@
     "kaggle_score": 0.6175,
     "logo": "/images/anthropic-1.svg"
   },
+  "anthropic/claude-opus-4-7@default": {
+    "name": "Claude Opus 4.7",
+    "tier2_m_ratio": 0.858,
+    "tier3_alignment": 0.264,
+    "raw_score": 0.6398,
+    "kaggle_score": 0.6118,
+    "logo": "/images/anthropic-1.svg"
+  },
   "google/gemini-3.1-flash-lite-preview": {
     "name": "Gemini 3.1 Flash-Lite",
     "tier2_m_ratio": 0.010,
