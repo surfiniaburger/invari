@@ -17,10 +17,10 @@ export function CVTComparisonChart({ data }: Props) {
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => setMounted(true), []);
 
-  const chartData = data.map(d => ({
+  const chartData = React.useMemo(() => data.map(d => ({
     ...d,
     mCVT: d.cvt * 1000
-  })).sort((a, b) => b.mCVT - a.mCVT);
+  })).sort((a, b) => b.mCVT - a.mCVT), [data]);
 
   if (!mounted) {
     return <div className="h-[300px] w-full bg-white/5 animate-pulse rounded-xl" />;

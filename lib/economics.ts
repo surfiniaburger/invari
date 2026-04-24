@@ -41,15 +41,22 @@ export function calculateEconomics(
   results: Record<string, any>, 
   mcsbResults: Record<string, any>
 ): ModelEconomics[] {
+  // Pre-process results into a high-performance lookup map to avoid O(N*M) searches
+  const nameToResultMap = new Map<string, any>();
+  Object.entries(results).forEach(([key, val]) => {
+    nameToResultMap.set(key, val);
+    if (val.name) nameToResultMap.set(val.name, val);
+  });
+
   return benchmarkUsage.map((usage) => {
     const price = pricingData.archive.find((p) => p.model === usage.model);
     if (!price) return null;
 
     const mcsb = mcsbResults[usage.model];
-    // Robust lookup for accuracy data across multiple possible key formats
-    const baseResult = results[usage.model] || 
-                       results[mcsb?.name || ""] || 
-                       Object.values(results).find(r => r.name === usage.model || r.name === mcsb?.name);
+    
+    // Efficient O(1) lookups
+    const baseResult = nameToResultMap.get(usage.model) || 
+                       nameToResultMap.get(mcsb?.name || "");
 
     const inputCost = (usage.inputTokens / 1000000) * (price.input_1m || 0);
     const outputCost = (usage.outputTokens / 1000000) * (price.output_1m || 0);
@@ -60,19 +67,14 @@ export function calculateEconomics(
     const mRatio = mcsb?.tier2_m_ratio ?? baseResult?.static?.m_ratio ?? baseResult?.multiturn_v2?.overall?.m_ratio ?? 0;
 
     // CVT: Cost of Verified Truth (Expected $ per correct trial)
-    // Rationale: If accuracy is 0, the cost to find truth is infinite.
     const costPerTrial = totalCost / 1030;
     const cvt = accuracy > 0 ? costPerTrial / accuracy : Infinity;
 
-    // Monologue Tax Estimation (Refactored for token conservation)
-    // High M-Ratio models are assumed to have a higher "Dividend" (less wasted correction tokens)
-    const baseTokens = 1030 * 150; // heuristic estimate for prompts (input)
-    
-    // Decompose outputTokens into Reasoning and Correction components
-    // Dividend is the fraction of reasoning that is 'efficient' vs 'correction/waste'
-    const efficiencyFactor = Math.min(1, Math.max(0.2, mRatio / 2)); // 0.2 to 1.0
+    // Monologue Tax Estimation (Normalized for token conservation)
+    const baseTokens = 1030 * 150; 
+    const efficiencyFactor = Math.min(1, Math.max(0.2, mRatio / 2));
     const reasoningTokens = usage.outputTokens * 0.8 * efficiencyFactor;
-    const correctionTokens = usage.outputTokens - reasoningTokens; // Ensure sum is exactly total output
+    const correctionTokens = usage.outputTokens - reasoningTokens;
 
     return {
       id: usage.model,

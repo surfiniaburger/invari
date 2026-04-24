@@ -18,10 +18,10 @@ export function EfficiencyFrontierChart({ data }: Props) {
   React.useEffect(() => setMounted(true), []);
 
   // Use log scale for cost
-  const chartData = data.map(d => ({
+  const chartData = React.useMemo(() => data.map(d => ({
     ...d,
     logCost: Math.log10(d.totalCost * 1000 / 1030 + 0.01), // normalize to cost per 1k + epsilon
-  })).sort((a, b) => a.logCost - b.logCost);
+  })).sort((a, b) => a.logCost - b.logCost), [data]);
 
   if (!mounted) {
     return <div className="h-[300px] w-full bg-white/5 animate-pulse rounded-xl" />;
@@ -45,7 +45,7 @@ export function EfficiencyFrontierChart({ data }: Props) {
             type="number" 
             dataKey="accuracy" 
             name="Trust Score" 
-            domain={[0.4, 0.8]}
+            domain={[0.4, 1.0]}
             axisLine={false}
             tickLine={false}
             tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10 }}
