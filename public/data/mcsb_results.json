@@ -63,6 +63,14 @@
     "kaggle_score": 0.5961,
     "logo": "/images/gemini-icon-logo.svg"
   },
+  "deepseek-ai/deepseek-v3.1": {
+    "name": "DeepSeek V3.1",
+    "tier2_m_ratio": 0.435,
+    "tier3_alignment": 0.392,
+    "raw_score": 0.5673,
+    "kaggle_score": 0.5539,
+    "logo": "/images/deepseek-2.svg"
+  },
   "deepseek-ai/deepseek-v3.2": {
     "name": "DeepSeek V3.2",
     "tier2_m_ratio": 0.000,

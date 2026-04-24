@@ -51,7 +51,7 @@ export function SectionDEconomics() {
             <CardHeader className="pb-2">
               <CardTitle className="text-white text-sm font-medium">The Efficiency Frontier</CardTitle>
               <CardDescription className="text-white/40 text-xs">
-                X: Log Cost per 1k trials | Y: MCSB Raw Score
+                X: Log Cost ($/1k trials) | Y: Weighted Trust Score (MCSB v2)
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -75,7 +75,13 @@ export function SectionDEconomics() {
         <div className="rounded-xl border border-white/5 bg-white/5 p-6">
           <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-6">Empirical Cost Summary (1,030 trials)</h4>
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-            {econData.filter(d => ["DeepSeek V3.2", "Gemini 3 Flash", "GPT-5.4", "Claude Opus 4.7"].includes(d.name)).sort((a,b) => a.totalCost - b.totalCost).map((d) => {
+            {econData.filter(d => [
+              "deepseek-ai/deepseek-v3.1",
+              "deepseek-ai/deepseek-v3.2", 
+              "google/gemini-3-flash-preview", 
+              "openai/gpt-5.4-2026-03-05", 
+              "anthropic/claude-opus-4-7@default"
+            ].includes(d.id)).sort((a,b) => a.totalCost - b.totalCost).map((d) => {
               const info = getProviderInfo(d.id);
               const Logo = ProviderLogoMap[info.provider] || DeepSeekLogo;
               return (
@@ -86,7 +92,7 @@ export function SectionDEconomics() {
                   </div>
                   <div className="space-y-0.5">
                     <p className="text-2xl font-semibold text-white tracking-tight">${d.totalCost.toFixed(2)}</p>
-                    <p className="text-[10px] text-emerald-400 font-mono">CVT: ${d.cvt.toFixed(3)}</p>
+                    <p className="text-[10px] text-emerald-400 font-mono tracking-tighter">{(d.cvt * 1000).toFixed(2)} mCVT</p>
                   </div>
                 </div>
               );

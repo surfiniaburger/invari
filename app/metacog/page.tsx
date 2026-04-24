@@ -181,7 +181,7 @@ export default function MetacogDashboard() {
                         <TableHead className="text-white/40 min-w-[120px]">Model</TableHead>
                         <TableHead className="text-white/40">T2 Sensitivity</TableHead>
                         <TableHead className="text-white/40 text-rose-400">T3 Alignment</TableHead>
-                        <TableHead className="text-white/40">Aggregated</TableHead>
+                        <TableHead className="text-white/40 text-emerald-400">Trust Score (v2)</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -254,8 +254,8 @@ export default function MetacogDashboard() {
                   <li><strong>Degradation Gap (Panel A)</strong>: Quantifies cross-tier degradation (Δ accuracy) capturing the gap between baseline competence and adversarial robustness.</li>
                   <li><strong>Alignment Failure (Panel C)</strong>: Alignment is quantified via response consistency under perturbation, decomposed into underreaction (invariance to critical changes) and overreaction (sensitivity to irrelevant perturbations).</li>
                   <li><strong>Confidence Shift (Δ)</strong>: Positive Δ indicates increased confidence under adversarial perturbation, suggesting miscalibrated belief updates or unstable internal representations.</li>
-                  <li><strong>CVT Comparison (Panel D)</strong>: Measures the expected dollar amount required to extract one verified correct answer under adversarial conditions.</li>
-                  <li><strong>Efficiency Frontier (Panel D)</strong>: A Pareto analysis of Accuracy vs. Log‑Cost ($ per 1k trials) identifying optimal ROI leaders.</li>
+                  <li><strong>CVT Comparison (Panel D)</strong>: Measures the expected dollar amount required to extract one point of verified trust under adversarial conditions. Scaled in **mCVT** (milli-dollars, where $1 = 1,000 mCVT) for legibility.</li>
+                  <li><strong>Efficiency Frontier (Panel D)</strong>: A Pareto analysis of **Weighted Trust Score** vs. Log‑Cost ($ per 1k trials) identifying optimal ROI leaders.</li>
                   <li><strong>Monologue Tax (Panel D)</strong>: Breaks down token costs into base, reasoning (CoT), and metacognitive correction components.</li>
                 </ul>
               </div>
