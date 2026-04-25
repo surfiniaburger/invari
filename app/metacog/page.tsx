@@ -194,7 +194,7 @@ export default function MetacogDashboard() {
                         </TableRow>
                       ))}
                     </TableBody>
-                  </Table> 
+                  </Table>
                 </div>
               </CardContent>
             </Card>
@@ -209,7 +209,7 @@ export default function MetacogDashboard() {
               Inspired by cognitive evaluation frameworks for measuring robust generalization under distribution shift.
             </p>
             <p className="mt-4 text-sm text-white/80">
-              High-fidelity diagnostics revealing the internal representational stability of models. 
+              High-fidelity diagnostics revealing the internal representational stability of models.
               Patterns highlight the sharp transition from foundational logic to adversarial security scenarios.
             </p>
           </div>
@@ -254,8 +254,8 @@ export default function MetacogDashboard() {
                   <li><strong>Degradation Gap (Panel A)</strong>: Quantifies cross-tier degradation (Δ accuracy) capturing the gap between baseline competence and adversarial robustness.</li>
                   <li><strong>Alignment Failure (Panel C)</strong>: Alignment is quantified via response consistency under perturbation, decomposed into underreaction (invariance to critical changes) and overreaction (sensitivity to irrelevant perturbations).</li>
                   <li><strong>Confidence Shift (Δ)</strong>: Positive Δ indicates increased confidence under adversarial perturbation, suggesting miscalibrated belief updates or unstable internal representations.</li>
-                  <li><strong>CVT Comparison (Panel D)</strong>: Measures the expected dollar amount required to extract one point of verified trust under adversarial conditions. Scaled in **mCVT** (milli-dollars, where $1 = 1,000 mCVT) for legibility.</li>
-                  <li><strong>Efficiency Frontier (Panel D)</strong>: A Pareto analysis of **Weighted Trust Score** vs. Log‑Cost ($ per 1k trials) identifying optimal ROI leaders.</li>
+                  <li><strong>CVT Comparison (Panel D)</strong>: Measures the expected dollar amount required to extract one point of verified trust under adversarial conditions. Scaled in <strong>mCVT</strong> (milli-dollars, where $1 = 1,000 mCVT) for legibility.</li>
+                  <li><strong>Efficiency Frontier (Panel D)</strong>: A Pareto analysis of <strong>Weighted Trust Score</strong> vs. Log‑Cost ($ per 1k trials) identifying optimal ROI leaders.</li>
                   <li><strong>Monologue Tax (Panel D)</strong>: Breaks down token costs into base, reasoning (CoT), and metacognitive correction components.</li>
                 </ul>
               </div>
