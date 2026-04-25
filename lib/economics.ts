@@ -59,9 +59,9 @@ export function calculateEconomics(
     
     // Strict priority lookup: Direct ID -> Direct Name -> Fuzzy Map Match
     const baseResult = results[usage.model] || 
-                       (mcsb?.name && results[mcsb.name]) ||
+                       (mcsb?.name ? results[mcsb.name] : undefined) ||
                        nameToResultMap.get(usage.model) || 
-                       (mcsb?.name && nameToResultMap.get(mcsb.name));
+                       (mcsb?.name ? nameToResultMap.get(mcsb.name) : undefined);
 
     const inputCost = (usage.inputTokens / 1000000) * (price.input_1m || 0);
     const outputCost = (usage.outputTokens / 1000000) * (price.output_1m || 0);
