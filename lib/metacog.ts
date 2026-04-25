@@ -38,7 +38,7 @@ export interface MultiTurnMetrics {
 }
 
 export interface ModelData {
-  name: string;
+  name?: string;
   static: BenchmarkMetrics;
   multiturn_v2: MultiTurnMetrics;
 }
