@@ -17,13 +17,13 @@ export function MonologueTaxChart({ data }: Props) {
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => setMounted(true), []);
 
-  const chartData = data.map(d => ({
+  const chartData = React.useMemo(() => data.map(d => ({
     name: d.name,
     id: d.id,
     "Base Usage": d.monologueTax.base,
     "Reasoning (CoT)": d.monologueTax.reasoning,
     "Correction (M-Ratio Dividend)": d.monologueTax.correction,
-  })).sort((a, b) => (b["Base Usage"] + b["Reasoning (CoT)"] + b["Correction (M-Ratio Dividend)"]) - (a["Base Usage"] + a["Reasoning (CoT)"] + a["Correction (M-Ratio Dividend)"]));
+  })).sort((a, b) => (b["Base Usage"] + b["Reasoning (CoT)"] + b["Correction (M-Ratio Dividend)"]) - (a["Base Usage"] + a["Reasoning (CoT)"] + a["Correction (M-Ratio Dividend)"])), [data]);
 
   if (!mounted) {
     return <div className="h-[400px] w-full bg-white/5 animate-pulse rounded-xl" />;
