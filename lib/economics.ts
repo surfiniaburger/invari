@@ -1,5 +1,5 @@
 import pricingData from "../public/data/pricing_archive.json";
-import { ModelData } from "./metacog";
+import { ModelData, MCSBResults } from "./metacog";
 
 export interface TokenUsage {
   model: string;
@@ -40,7 +40,7 @@ export interface ModelEconomics {
 
 export function calculateEconomics(
   results: Record<string, ModelData>, 
-  mcsbResults: Record<string, any>
+  mcsbResults: MCSBResults
 ): ModelEconomics[] {
   // Pre-process results into a high-performance lookup map for name-based fallback searches
   // We use a check to prevent name-to-name collisions (first one wins)
@@ -58,10 +58,10 @@ export function calculateEconomics(
     const mcsb = mcsbResults[usage.model];
     
     // Strict priority lookup: Direct ID -> Direct Name -> Fuzzy Map Match
-    const baseResult = (results[usage.model] || 
+    const baseResult = results[usage.model] || 
                        (mcsb?.name && results[mcsb.name]) ||
                        nameToResultMap.get(usage.model) || 
-                       (mcsb?.name && nameToResultMap.get(mcsb.name))) as ModelData | undefined;
+                       (mcsb?.name && nameToResultMap.get(mcsb.name));
 
     const inputCost = (usage.inputTokens / 1000000) * (price.input_1m || 0);
     const outputCost = (usage.outputTokens / 1000000) * (price.output_1m || 0);
