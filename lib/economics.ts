@@ -41,11 +41,10 @@ export function calculateEconomics(
   results: Record<string, any>, 
   mcsbResults: Record<string, any>
 ): ModelEconomics[] {
-  // Pre-process results into a high-performance lookup map to avoid O(N*M) searches
+  // Pre-process results into a high-performance lookup map for name-based fallback searches
   const nameToResultMap = new Map<string, any>();
-  Object.entries(results).forEach(([key, val]) => {
-    nameToResultMap.set(key, val);
-    if (val.name) nameToResultMap.set(val.name, val);
+  Object.values(results).forEach((val) => {
+    if (val?.name) nameToResultMap.set(val.name, val);
   });
 
   return benchmarkUsage.map((usage) => {
@@ -54,9 +53,11 @@ export function calculateEconomics(
 
     const mcsb = mcsbResults[usage.model];
     
-    // Efficient O(1) lookups
-    const baseResult = nameToResultMap.get(usage.model) || 
-                       nameToResultMap.get(mcsb?.name || "");
+    // Strict priority lookup: Direct ID -> Direct Name -> Fuzzy Map Match
+    const baseResult = results[usage.model] || 
+                       (mcsb?.name ? results[mcsb.name] : undefined) ||
+                       nameToResultMap.get(usage.model) || 
+                       (mcsb?.name ? nameToResultMap.get(mcsb.name) : undefined);
 
     const inputCost = (usage.inputTokens / 1000000) * (price.input_1m || 0);
     const outputCost = (usage.outputTokens / 1000000) * (price.output_1m || 0);
