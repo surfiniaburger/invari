@@ -20,7 +20,7 @@ export function CVTComparisonChart({ data }: Props) {
   const chartData = React.useMemo(() => data.map(d => ({
     ...d,
     cvtCent: d.cvt * 100
-  })).sort((a, b) => b.cvtCent - a.cvtCent), [data]);
+  })).sort((a, b) => a.cvtCent - b.cvtCent), [data]);
 
   if (!mounted) {
     return <div className="h-[300px] w-full bg-white/5 animate-pulse rounded-xl" />;
