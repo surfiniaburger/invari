@@ -39,7 +39,7 @@ export function SectionDEconomics() {
             <CardHeader className="pb-2">
               <CardTitle className="text-white text-sm font-medium">Cost of Verified Truth (CVT)</CardTitle>
               <CardDescription className="text-white/40 text-xs">
-                Expected dollars required to produce one correct adversarial coding trial.
+                Expected cost (¢) required to produce one correct adversarial coding trial.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -92,7 +92,7 @@ export function SectionDEconomics() {
                   </div>
                   <div className="space-y-0.5">
                     <p className="text-2xl font-semibold text-white tracking-tight">${d.totalCost.toFixed(2)}</p>
-                    <p className="text-[10px] text-emerald-400 font-mono tracking-tighter">{(d.cvt * 1000).toFixed(2)} mCVT</p>
+                    <p className="text-[10px] text-emerald-400 font-mono tracking-tighter">{(d.cvt * 100).toFixed(3)} ¢ CVT</p>
                   </div>
                 </div>
               );

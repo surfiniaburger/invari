@@ -19,8 +19,8 @@ export function CVTComparisonChart({ data }: Props) {
 
   const chartData = React.useMemo(() => data.map(d => ({
     ...d,
-    mCVT: d.cvt * 1000
-  })).sort((a, b) => b.mCVT - a.mCVT), [data]);
+    cvtCent: d.cvt * 100
+  })).sort((a, b) => b.cvtCent - a.cvtCent), [data]);
 
   if (!mounted) {
     return <div className="h-[300px] w-full bg-white/5 animate-pulse rounded-xl" />;
@@ -52,7 +52,7 @@ export function CVTComparisonChart({ data }: Props) {
             cursor={{ fill: "rgba(255,255,255,0.05)" }}
             content={({ active, payload }) => {
               if (active && payload && payload.length) {
-                const d = payload[0].payload as ModelEconomics & { mCVT: number };
+                const d = payload[0].payload as ModelEconomics & { cvtCent: number };
                 const info = getProviderInfo(d.id);
                 const Logo = ProviderLogoMap[info.provider] || DeepSeekLogo;
                 
@@ -63,12 +63,12 @@ export function CVTComparisonChart({ data }: Props) {
                       <p className="text-xs font-bold text-white">{d.name}</p>
                     </div>
                     <p className="text-[10px] text-white/50 mb-2 underline decoration-emerald-500/50 underline-offset-4">
-                      Cost of Verified Trust (CVT)
+                      Cost of Verified Truth (CVT)
                     </p>
                     <div className="space-y-1">
                       <div className="flex justify-between gap-8 text-emerald-400">
-                        <span className="text-[10px] text-white/40">Value (mCVT):</span>
-                        <span className="text-xs font-mono">{d.mCVT.toFixed(2)} mCVT</span>
+                        <span className="text-[10px] text-white/40">Value:</span>
+                        <span className="text-xs font-mono">{d.cvtCent.toFixed(3)} ¢</span>
                       </div>
                       <div className="flex justify-between gap-8 pt-1">
                         <span className="text-[10px] text-white/40">Trust Score:</span>
@@ -82,7 +82,7 @@ export function CVTComparisonChart({ data }: Props) {
             }}
           />
           <Bar 
-            dataKey="mCVT" 
+            dataKey="cvtCent" 
             radius={[0, 4, 4, 0]}
             barSize={12}
           >
@@ -94,9 +94,9 @@ export function CVTComparisonChart({ data }: Props) {
               />
             ))}
             <LabelList 
-              dataKey="mCVT" 
+              dataKey="cvtCent" 
               position="right" 
-              formatter={(val: any) => typeof val === 'number' ? `${val.toFixed(2)} mCVT` : val}
+              formatter={(val: any) => typeof val === 'number' ? `${val.toFixed(3)} ¢` : val}
               style={{ fill: "rgba(255,255,255,0.7)", fontSize: 10, fontWeight: 500, fontFamily: 'monospace' }}
             />
           </Bar>
