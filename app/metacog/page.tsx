@@ -254,7 +254,7 @@ export default function MetacogDashboard() {
                   <li><strong>Degradation Gap (Panel A)</strong>: Quantifies cross-tier degradation (Δ accuracy) capturing the gap between baseline competence and adversarial robustness.</li>
                   <li><strong>Alignment Failure (Panel C)</strong>: Alignment is quantified via response consistency under perturbation, decomposed into underreaction (invariance to critical changes) and overreaction (sensitivity to irrelevant perturbations).</li>
                   <li><strong>Confidence Shift (Δ)</strong>: Positive Δ indicates increased confidence under adversarial perturbation, suggesting miscalibrated belief updates or unstable internal representations.</li>
-                  <li><strong>CVT Comparison (Panel D)</strong>: Measures the expected cost required to extract one point of verified trust under adversarial conditions. Scaled in <strong>cents (¢)</strong> for intuitive economic evaluation.</li>
+                  <li><strong>CVT Comparison (Panel D)</strong>: Measures the expected cost required to extract one point of verified truth under adversarial conditions. Scaled in <strong>cents (¢)</strong> for intuitive economic evaluation.</li>
                   <li><strong>Efficiency Frontier (Panel D)</strong>: A Pareto analysis of <strong>Weighted Trust Score</strong> vs. Log‑Cost ($ per 1k trials) identifying optimal ROI leaders.</li>
                   <li><strong>Monologue Tax (Panel D)</strong>: Breaks down token costs into base, reasoning (CoT), and metacognitive correction components.</li>
                 </ul>
