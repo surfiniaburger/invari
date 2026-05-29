@@ -1,0 +1,135 @@
+{
+  "accepted_rows": 12,
+  "accepted_with_not_applicable_rate": 0.0,
+  "attempts_path": "artifacts/attempts/pilot-v1-softchecks.jsonl",
+  "attempts_total": 32,
+  "b0_structural_completeness_pass_rate": 1.0,
+  "b1_inconclusive_in_accepted_rate": 0.0,
+  "b1_inconclusive_predicate_rate": 0.0,
+  "b1_unsupported_in_accepted_rate": 0.0,
+  "b1_unsupported_predicate_rate": 0.0,
+  "b2_anchor_match_rate": 1.0,
+  "b2_generic_anchor_fraction": 0.0,
+  "b2_mechanism_grounding_fail_rate": 0.0,
+  "b2_mechanism_grounding_total": 26,
+  "b2_predicate_aboutness_fail_rate": 0.038461538461538464,
+  "b2_predicate_aboutness_total": 26,
+  "b2_strict_fail_rate": 0.0625,
+  "b2_strict_failures": {
+    "anchors_no_match": 0,
+    "anchors_too_few_after_normalization": 2,
+    "mechanism_evidence_failed": 0
+  },
+  "b2_strict_total": 32,
+  "checks": {
+    "max_cost_per_accepted_row": true,
+    "max_inconclusive_in_accepted_rate": true,
+    "max_tokens_per_accepted_row": true,
+    "max_unsupported_in_accepted_rate": true,
+    "min_anchor_match_rate": true,
+    "min_verifier_parse_ok_rate": true,
+    "min_verifier_pass_rate": true
+  },
+  "disagreement_judge_accept_but_verifier_missing_or_parse_fail_count": 0,
+  "disagreement_verifier_pass_but_anchor_strict_fail_count": 0,
+  "efficiency_cost_per_accepted_row": 0.0,
+  "efficiency_cost_per_attempt": 0.0,
+  "efficiency_cost_per_verifier_called_attempt": 0.0,
+  "efficiency_tokens_per_accepted_row": 80920.0,
+  "efficiency_tokens_per_attempt": 30345.0,
+  "efficiency_tokens_per_verifier_called_attempt": 53946.666666666664,
+  "failures": [],
+  "generation_config_missing_attempts": 0,
+  "generation_config_values": {
+    "default": [
+      {}
+    ],
+    "model_overrides": [
+      {
+        "gemma4": {
+          "temperature": 1.0,
+          "top_k": 64,
+          "top_p": 0.95
+        }
+      }
+    ],
+    "sampling_profile": [
+      "ollama_gemma4"
+    ]
+  },
+  "input_path": "training_corpus.jsonl",
+  "pass": true,
+  "prowin_total": 20,
+  "thresholds": {
+    "max_cost_per_accepted_row": null,
+    "max_inconclusive_in_accepted_rate": 0.2,
+    "max_tokens_per_accepted_row": null,
+    "max_unsupported_in_accepted_rate": 0.05,
+    "min_anchor_match_rate": 0.8,
+    "min_verifier_parse_ok_rate": 0.0,
+    "min_verifier_pass_rate": 0.0
+  },
+  "total_rows": 12,
+  "usage_by_model_totals": {
+    "ollama/gemma4:31b-cloud": {
+      "calls": 46,
+      "completion_tokens": 65054,
+      "cost_usd": 0.0,
+      "prompt_tokens": 643931,
+      "total_tokens": 708985
+    },
+    "ollama/gpt-oss:120b-cloud": {
+      "calls": 100,
+      "completion_tokens": 113893,
+      "cost_usd": 0.0,
+      "prompt_tokens": 148162,
+      "total_tokens": 262055
+    }
+  },
+  "usage_by_source_rates": {
+    "provider": 1.0
+  },
+  "usage_by_source_totals": {
+    "provider": 146
+  },
+  "usage_by_stage_totals": {
+    "generator_boundary": {
+      "calls": 22,
+      "completion_tokens": 25976,
+      "cost_usd": 0.0,
+      "prompt_tokens": 409760,
+      "total_tokens": 435736
+    },
+    "generator_refine": {
+      "calls": 24,
+      "completion_tokens": 39078,
+      "cost_usd": 0.0,
+      "prompt_tokens": 234171,
+      "total_tokens": 273249
+    },
+    "judge_adjudication": {
+      "calls": 64,
+      "completion_tokens": 83149,
+      "cost_usd": 0.0,
+      "prompt_tokens": 112453,
+      "total_tokens": 195602
+    },
+    "verifier_audit": {
+      "calls": 36,
+      "completion_tokens": 30744,
+      "cost_usd": 0.0,
+      "prompt_tokens": 35709,
+      "total_tokens": 66453
+    }
+  },
+  "usage_calls_total": 146,
+  "usage_completion_tokens_total": 178947,
+  "usage_cost_usd_total": 0.0,
+  "usage_missing_usage_calls_total": 0,
+  "usage_prompt_tokens_total": 792093,
+  "usage_total_tokens_total": 971040,
+  "verifier_called_on_prowin_rate": 0.9,
+  "verifier_called_rate": 0.5625,
+  "verifier_parse_ok_rate": 1.0,
+  "verifier_pass_rate": 0.6666666666666666
+}
