@@ -47,7 +47,7 @@ export function SwarmTelemetryCharts({ stageTotals, modelTotals }: Props) {
       verifier_audit: "Verifier Logic Audit",
     };
 
-    return Object.entries(stageTotals).map(([stage, metrics]) => ({
+    return Object.entries(stageTotals ?? {}).map(([stage, metrics]) => ({
       name: labelMap[stage] || stage,
       value: metrics.total_tokens,
       color: colorMap[stage] || "#6b7280",
@@ -58,7 +58,7 @@ export function SwarmTelemetryCharts({ stageTotals, modelTotals }: Props) {
   }, [stageTotals]);
 
   const modelData = React.useMemo<ModelData[]>(() => {
-    return Object.entries(modelTotals).map(([model, metrics]) => {
+    return Object.entries(modelTotals ?? {}).map(([model, metrics]) => {
       const cleanName = model.includes("gemma4") ? "Gemma-4 (31B Debater/Gen)" : "GPT-OSS (120B Judge/Ver)";
       return {
         name: cleanName,
@@ -109,7 +109,7 @@ export function SwarmTelemetryCharts({ stageTotals, modelTotals }: Props) {
                 content={({ active, payload }) => {
                   if (active && payload && payload.length) {
                     const d = payload[0].payload as StageData;
-                    const pct = ((d.value / totalTokens) * 100).toFixed(1);
+                    const pct = totalTokens > 0 ? ((d.value / totalTokens) * 100).toFixed(1) : "0.0";
                     return (
                       <div className="rounded-lg border border-white/10 bg-black/95 p-3 shadow-2xl backdrop-blur-xl text-xs space-y-1">
                         <div className="font-bold text-white flex items-center gap-1.5">
