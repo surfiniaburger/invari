@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useState } from "react";
 import { MetacogPlotlyChart } from "@/components/metacog/metacog-plotly-chart";
 import { CalibrationCurveChart } from "@/components/metacog/calibration-curve-chart";
@@ -52,15 +53,16 @@ export default function MetacogDashboard() {
       <JsonLd />
       <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          <a href="/" className="text-sm font-semibold tracking-[0.3em] text-white/70">
+          <Link href="/" className="text-sm font-semibold tracking-[0.3em] text-white/70 hover:text-white transition-colors">
             IN-VARIA
-          </a>
+          </Link>
           <div className="hidden items-center gap-6 text-xs uppercase tracking-[0.2em] text-white/50 md:flex">
-            <a href="#general" className="transition hover:text-white">General</a>
-            <a href="#safety" className="transition hover:text-white">Safety</a>
-            <a href="#diagnostics" className="transition hover:text-white">Diagnostics</a>
-            <a href="#economics" className="transition hover:text-white">Economics</a>
-            <a href="#method" className="transition hover:text-white">Method</a>
+            <Link href="#general" className="transition hover:text-white">General</Link>
+            <Link href="#safety" className="transition hover:text-white">Safety</Link>
+            <Link href="#diagnostics" className="transition hover:text-white">Diagnostics</Link>
+            <Link href="#economics" className="transition hover:text-white">Economics</Link>
+            <Link href="#method" className="transition hover:text-white">Method</Link>
+            <Link href="/audit" className="transition hover:text-white">Pipeline Audit</Link>
           </div>
           <Button asChild className="rounded-full px-6">
             <a href="mailto:ade@in-varia.com?subject=Request%20Demo">Request Demo</a>

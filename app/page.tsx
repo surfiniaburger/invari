@@ -1,3 +1,4 @@
+import Link from "next/link";
 import HeroBeams from "@/components/hero-beams";
 import { PixelGridBackground } from "@/components/ui/pixel-grid-background";
 import { MetacogPlotlyChart } from "@/components/metacog/metacog-plotly-chart";
@@ -12,14 +13,15 @@ export default function Home() {
     <div className="relative min-h-screen w-screen overflow-x-hidden font-sans">
       <header className="sticky top-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          <span className="text-sm font-semibold tracking-[0.3em] text-white/70">
+          <Link href="/" className="text-sm font-semibold tracking-[0.3em] text-white/70 hover:text-white transition-colors">
             IN-VARIA
-          </span>
+          </Link>
           <nav className="hidden items-center gap-6 text-xs uppercase tracking-[0.2em] text-white/50 md:flex">
-            <a href="#benchmark" className="transition hover:text-white">Benchmark</a>
-            <a href="#taxonomy" className="transition hover:text-white">Taxonomy</a>
-            <a href="#evidence" className="transition hover:text-white">Evidence</a>
-            <a href="#trajectory" className="transition hover:text-white">Trajectory</a>
+            <Link href="#benchmark" className="transition hover:text-white">Benchmark</Link>
+            <Link href="#taxonomy" className="transition hover:text-white">Taxonomy</Link>
+            <Link href="#evidence" className="transition hover:text-white">Evidence</Link>
+            <Link href="#trajectory" className="transition hover:text-white">Trajectory</Link>
+            <Link href="/audit" className="transition hover:text-white">Pipeline Audit</Link>
           </nav>
           <Button asChild className="rounded-full px-6">
             <a href="mailto:ade@in-varia.com?subject=Request%20Demo">Request Demo</a>
@@ -57,7 +59,7 @@ export default function Home() {
                 <a href="mailto:ade@in-varia.com?subject=Request%20Demo">Request Demo</a>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full px-8">
-                <a href="/metacog">View Report</a>
+                <Link href="/metacog">View Report</Link>
               </Button>
             </div>
           </div>
@@ -152,7 +154,7 @@ export default function Home() {
                 resilient-but-gullible systems, and flat monitors.
               </p>
               <Button asChild variant="outline" className="w-full">
-                <a href="/metacog#diagnostics">View full diagnostics</a>
+                <Link href="/metacog#diagnostics">View full diagnostics</Link>
               </Button>
             </CardContent>
           </Card>
@@ -193,13 +195,23 @@ export default function Home() {
             </p>
             <div className="grid gap-4">
               {[
-                "Phase 1: Metacognitive control benchmarks (live)",
-                "Phase 2: Cross-faculty expansions (attention, executive, social)",
-                "Phase 3: Swarm reliability + agentic monitoring",
+                { text: "Phase 1: Metacognitive control benchmarks", live: true },
+                { text: "Phase 2: Cross-faculty expansions (attention, executive, social)", live: false },
+                { text: "Phase 3: Swarm reliability + agentic monitoring", live: true, href: "/audit" },
               ].map((step) => (
-                <div key={step} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70">
-                  <span className="h-2 w-2 rounded-full bg-white/70" />
-                  {step}
+                <div key={step.text} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70">
+                  <span className={`h-2 w-2 rounded-full ${step.live ? "bg-emerald-400 shadow-sm shadow-emerald-400/40" : "bg-white/30"}`} />
+                  <span className="flex-1">{step.text}</span>
+                  {step.live && (
+                    <Badge variant="outline" className="border-emerald-500/30 bg-emerald-500/5 text-emerald-400 text-[9px] px-1.5 py-0">
+                      LIVE
+                    </Badge>
+                  )}
+                  {step.href && (
+                    <Link href={step.href} className="text-xs text-white/40 underline underline-offset-2 decoration-white/20 hover:text-white/70 transition ml-2">
+                      View Audit Portal →
+                    </Link>
+                  )}
                 </div>
               ))}
             </div>
