@@ -58,7 +58,7 @@ export function SwarmTelemetryCharts({ stageTotals, modelTotals }: Props) {
   }, [stageTotals]);
 
   const modelData = React.useMemo<ModelData[]>(() => {
-    return Object.entries(modelTotals ?? {}).map(([model, metrics]) => {
+    return Object.entries((modelTotals as typeof modelTotals | undefined) ?? {}).map(([model, metrics]) => {
       const cleanName = model.includes("gemma4") ? "Gemma-4 (31B Debater/Gen)" : "GPT-OSS (120B Judge/Ver)";
       return {
         name: cleanName,
