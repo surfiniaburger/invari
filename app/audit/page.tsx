@@ -436,7 +436,7 @@ export default function AuditPortal() {
             <CardContent>
               <div className="flex flex-wrap gap-4">
                 {Object.entries(
-                  (tel.b2_strict_failures as Record<string, number>) ?? {}
+                  (tel.b2_strict_failures as Record<string, number> | undefined) ?? {}
                 ).map(([key, count]) => (
                   <div
                     key={key}
