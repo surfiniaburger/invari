@@ -504,7 +504,7 @@ export default function AuditPortal() {
                   Gate Thresholds
                 </p>
                 <div className="rounded-lg border border-white/10 bg-white/[0.02] p-3 font-mono text-xs text-white/60 space-y-1">
-                  {Object.entries((tel.thresholds as Record<string, number | null>) ?? {}).map(
+                  {Object.entries((tel.thresholds as Record<string, number | null> | undefined) ?? {}).map(
                     ([key, val]) => (
                       <p key={key}>
                         {key.replace(/_/g, " ")}:{" "}
