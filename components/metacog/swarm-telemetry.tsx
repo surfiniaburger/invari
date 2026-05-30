@@ -47,7 +47,7 @@ export function SwarmTelemetryCharts({ stageTotals, modelTotals }: Props) {
       verifier_audit: "Verifier Logic Audit",
     };
 
-    return Object.entries(stageTotals ?? {}).map(([stage, metrics]) => ({
+    return Object.entries((stageTotals as typeof stageTotals | undefined) ?? {}).map(([stage, metrics]) => ({
       name: labelMap[stage] || stage,
       value: metrics.total_tokens,
       color: colorMap[stage] || "#6b7280",
