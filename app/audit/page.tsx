@@ -104,6 +104,14 @@ function AttemptInspector({ attempts }: { attempts: Attempt[] }) {
     },
   };
 
+  if (!selected) {
+    return (
+      <div className="rounded-xl border border-white/10 bg-white/[0.03] p-8 text-center text-white/40 text-sm">
+        No attempts available to inspect.
+      </div>
+    );
+  }
+
   return (
     <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
       {/* Sidebar: attempt list */}
@@ -428,7 +436,7 @@ export default function AuditPortal() {
             <CardContent>
               <div className="flex flex-wrap gap-4">
                 {Object.entries(
-                  tel.b2_strict_failures as Record<string, number>
+                  (tel.b2_strict_failures as Record<string, number> | undefined) ?? {}
                 ).map(([key, count]) => (
                   <div
                     key={key}
@@ -496,7 +504,7 @@ export default function AuditPortal() {
                   Gate Thresholds
                 </p>
                 <div className="rounded-lg border border-white/10 bg-white/[0.02] p-3 font-mono text-xs text-white/60 space-y-1">
-                  {Object.entries(tel.thresholds as Record<string, number | null>).map(
+                  {Object.entries((tel.thresholds as Record<string, number | null> | undefined) ?? {}).map(
                     ([key, val]) => (
                       <p key={key}>
                         {key.replace(/_/g, " ")}:{" "}
